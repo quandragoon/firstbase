@@ -22,6 +22,7 @@
 		5FE2496D18B489D6007D740A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE2494C18B489D6007D740A /* UIKit.framework */; };
 		5FE2497518B489D6007D740A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2497318B489D6007D740A /* InfoPlist.strings */; };
 		5FE2497718B489D6007D740A /* FirstBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2497618B489D6007D740A /* FirstBaseTests.m */; };
+		5FE2498618B49D78007D740A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2498518B49D78007D740A /* logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		5FE2497218B489D6007D740A /* FirstBaseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FirstBaseTests-Info.plist"; sourceTree = "<group>"; };
 		5FE2497418B489D6007D740A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5FE2497618B489D6007D740A /* FirstBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstBaseTests.m; sourceTree = "<group>"; };
+		5FE2498518B49D78007D740A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 		5FE2494F18B489D6007D740A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FE2498018B49936007D740A /* Images */,
 				5FE2495018B489D6007D740A /* FirstBase-Info.plist */,
 				5FE2495118B489D6007D740A /* InfoPlist.strings */,
 				5FE2495418B489D6007D740A /* main.m */,
@@ -153,6 +156,14 @@
 				5FE2497318B489D6007D740A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5FE2498018B49936007D740A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5FE2498518B49D78007D740A /* logo.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE2495F18B489D6007D740A /* Main_iPad.storyboard in Resources */,
+				5FE2498618B49D78007D740A /* logo.png in Resources */,
 				5FE2496418B489D6007D740A /* Images.xcassets in Resources */,
 				5FE2495C18B489D6007D740A /* Main_iPhone.storyboard in Resources */,
 				5FE2495318B489D6007D740A /* InfoPlist.strings in Resources */,
@@ -474,6 +486,7 @@
 				5FE2497C18B489D6007D740A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5FE2497D18B489D6007D740A /* Build configuration list for PBXNativeTarget "FirstBaseTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +495,7 @@
 				5FE2497F18B489D6007D740A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
