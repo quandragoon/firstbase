@@ -6,16 +6,34 @@
 //  Copyright (c) 2014 Quan Nguyen. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "AppDelegate.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [Parse setApplicationId:@"R7Eu7Sc6m1QMnx8lkJqZYHiHAu587ar1iW0fHJ01"
+           clientKey:@"c0JyaYoZFWISGHHmIbOLrgHYRpZ2iAspfizDlT8F"];
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
+                                                    UIRemoteNotificationTypeBadge |
+                                                    UIRemoteNotificationTypeSound];
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation setDeviceTokenFromData:deviceToken];
+    [installation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [PFPush handlePush:userInfo];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -42,5 +60,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end
