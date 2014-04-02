@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Quan Nguyen. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
-
 @end
 
 @implementation LoginViewController
@@ -28,7 +28,14 @@
 }
 
 - (IBAction)loginClicked:(id)sender {
-    
+    [PFUser logInWithUsernameInBackground:_txtUsername.text password:_txtPassword.text block:^(PFUser *user, NSError *error) {
+         if (user) {
+             [self pushMainController];
+         }
+         else {
+             [[[UIAlertView alloc] initWithTitle:@"Cannot Login" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
+         }
+    }];
 }
 
 

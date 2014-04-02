@@ -61,5 +61,12 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)pushMainController {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *mainController = [sb instantiateViewControllerWithIdentifier:@"main-navigation-controller"];
+    
+    [self presentViewController:mainController animated:YES completion:nil];
+}
+
 
 @end

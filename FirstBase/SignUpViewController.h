@@ -10,6 +10,11 @@
 
 @interface SignUpViewController : UIViewController
 
+@property (nonatomic, weak) IBOutlet UITextField *txtUsername;
+@property (nonatomic, weak) IBOutlet UITextField *txtPassword;
+@property (nonatomic, weak) IBOutlet UITextField *txtEmail;
+
 - (IBAction)cancelClicked:(id)sender;
+- (IBAction)signupClicked:(id)sender;
 
 @end

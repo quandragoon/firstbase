@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Quan Nguyen. All rights reserved.
 //
 
+#import <Parse/Parse.h>
+#import "LoginViewController.h"
 #import "SignUpViewController.h"
 
 @interface SignUpViewController ()
@@ -23,9 +25,23 @@
     return self;
 }
 
+- (void)signupClicked:(id)sender {
+    PFUser *user = [PFUser user];
+    user.email = [self.txtEmail text];
+    user.password = [self.txtPassword text];
+    user.username = [self.txtUsername text];
+    
+    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            [((LoginViewController*) self.navigationController.parentViewController) pushMainController];
+        }
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
+    }];
+}
+
 - (void)cancelClicked:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidLoad
