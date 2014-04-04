@@ -33,9 +33,12 @@
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            [((LoginViewController*) self.navigationController.parentViewController) pushMainController];
+            NSLog(@"Signup succeeded.");
+//            [((LoginViewController*) self.navigationController.parentViewController) pushMainController];
         }
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
+        else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
+        }
     }];
 }
 
