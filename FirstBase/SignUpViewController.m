@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
 
@@ -34,7 +35,9 @@
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Signup succeeded.");
-//            [((LoginViewController*) self.navigationController.parentViewController) pushMainController];
+            [self.navigationController dismissViewControllerAnimated:YES completion:^{
+                [(AppDelegate*)([[UIApplication sharedApplication] delegate]) pushMainController];
+            }];
         }
         else {
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
