@@ -62,10 +62,9 @@
 }
 
 - (void)pushMainController {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     UINavigationController *mainController = [sb instantiateViewControllerWithIdentifier:@"main-navigation-controller"];
-    
-//    [self presentViewController:mainController animated:YES completion:nil];
+    [self.window.rootViewController presentViewController:mainController animated:YES completion:nil];
 }
 
 
