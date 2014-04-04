@@ -25,7 +25,6 @@
 		5FE2498818B4A629007D740A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2498718B4A629007D740A /* logo.png */; };
 		7E4BC70D18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70C18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m */; };
 		7E4BC71018E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70F18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
-		7E4BC71218E3AF6A00EC2EE1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC71118E3AF6A00EC2EE1 /* Parse.framework */; };
 		7E4BC71418E3B07700EC2EE1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC71318E3B07700EC2EE1 /* AudioToolbox.framework */; };
 		7E4BC71618E3B08100EC2EE1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC71518E3B08100EC2EE1 /* CFNetwork.framework */; };
 		7E4BC71818E3B09100EC2EE1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC71718E3B09100EC2EE1 /* CoreLocation.framework */; };
@@ -36,6 +35,7 @@
 		7E4BC72218E3B0B500EC2EE1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC72118E3B0B500EC2EE1 /* SystemConfiguration.framework */; };
 		7E4BC72418E3B0BA00EC2EE1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC72318E3B0B900EC2EE1 /* StoreKit.framework */; };
 		7E4BC72718E3B2C500EC2EE1 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC72618E3B2C500EC2EE1 /* SignUpViewController.m */; };
+		7E68E48118EE7109003FBFC0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E68E48018EE7109003FBFC0 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,6 @@
 		7E4BC70C18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		7E4BC70E18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		7E4BC70F18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
-		7E4BC71118E3AF6A00EC2EE1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = FirstBase/Parse.framework; sourceTree = "<group>"; };
 		7E4BC71318E3B07700EC2EE1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7E4BC71518E3B08100EC2EE1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		7E4BC71718E3B09100EC2EE1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -86,6 +85,7 @@
 		7E4BC72318E3B0B900EC2EE1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7E4BC72518E3B2C500EC2EE1 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		7E4BC72618E3B2C500EC2EE1 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		7E68E48018EE7109003FBFC0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = FirstBase/Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +99,12 @@
 				7E4BC71E18E3B0A700EC2EE1 /* QuartzCore.framework in Frameworks */,
 				7E4BC71C18E3B0A000EC2EE1 /* MobileCoreServices.framework in Frameworks */,
 				7E4BC71A18E3B09900EC2EE1 /* libz.dylib in Frameworks */,
+				7E68E48118EE7109003FBFC0 /* Parse.framework in Frameworks */,
 				7E4BC71818E3B09100EC2EE1 /* CoreLocation.framework in Frameworks */,
 				5FE2494B18B489D6007D740A /* CoreGraphics.framework in Frameworks */,
 				7E4BC71618E3B08100EC2EE1 /* CFNetwork.framework in Frameworks */,
 				7E4BC71418E3B07700EC2EE1 /* AudioToolbox.framework in Frameworks */,
 				5FE2494D18B489D6007D740A /* UIKit.framework in Frameworks */,
-				7E4BC71218E3AF6A00EC2EE1 /* Parse.framework in Frameworks */,
 				5FE2494918B489D6007D740A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +144,7 @@
 		5FE2494718B489D6007D740A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E68E48018EE7109003FBFC0 /* Parse.framework */,
 				7E4BC72318E3B0B900EC2EE1 /* StoreKit.framework */,
 				7E4BC72118E3B0B500EC2EE1 /* SystemConfiguration.framework */,
 				7E4BC71F18E3B0AF00EC2EE1 /* Security.framework */,
@@ -153,7 +154,6 @@
 				7E4BC71718E3B09100EC2EE1 /* CoreLocation.framework */,
 				7E4BC71518E3B08100EC2EE1 /* CFNetwork.framework */,
 				7E4BC71318E3B07700EC2EE1 /* AudioToolbox.framework */,
-				7E4BC71118E3AF6A00EC2EE1 /* Parse.framework */,
 				5FE2494818B489D6007D740A /* Foundation.framework */,
 				5FE2494A18B489D6007D740A /* CoreGraphics.framework */,
 				5FE2494C18B489D6007D740A /* UIKit.framework */,
@@ -464,7 +464,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/ccp/code/FirstBase/FirstBase,
+					"$(SRCROOT)/FirstBase",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstBase/FirstBase-Prefix.pch";
@@ -481,7 +481,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/ccp/code/FirstBase/FirstBase,
+					"$(SRCROOT)/FirstBase",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstBase/FirstBase-Prefix.pch";
