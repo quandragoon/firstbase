@@ -36,6 +36,7 @@
 		7E4BC72418E3B0BA00EC2EE1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC72318E3B0B900EC2EE1 /* StoreKit.framework */; };
 		7E4BC72718E3B2C500EC2EE1 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC72618E3B2C500EC2EE1 /* SignUpViewController.m */; };
 		7E68E48118EE7109003FBFC0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E68E48018EE7109003FBFC0 /* Parse.framework */; };
+		7E68E48418EE77D1003FBFC0 /* NewsfeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E68E48318EE77D1003FBFC0 /* NewsfeedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		7E4BC72518E3B2C500EC2EE1 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		7E4BC72618E3B2C500EC2EE1 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		7E68E48018EE7109003FBFC0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = FirstBase/Parse.framework; sourceTree = "<group>"; };
+		7E68E48218EE77D1003FBFC0 /* NewsfeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsfeedViewController.h; sourceTree = "<group>"; };
+		7E68E48318EE77D1003FBFC0 /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +182,8 @@
 				7E4BC70F18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
 				7E4BC72518E3B2C500EC2EE1 /* SignUpViewController.h */,
 				7E4BC72618E3B2C500EC2EE1 /* SignUpViewController.m */,
+				7E68E48218EE77D1003FBFC0 /* NewsfeedViewController.h */,
+				7E68E48318EE77D1003FBFC0 /* NewsfeedViewController.m */,
 			);
 			path = FirstBase;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				7E4BC70D18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				7E4BC72718E3B2C500EC2EE1 /* SignUpViewController.m in Sources */,
 				5FE2495918B489D6007D740A /* AppDelegate.m in Sources */,
+				7E68E48418EE77D1003FBFC0 /* NewsfeedViewController.m in Sources */,
 				5FE2495518B489D6007D740A /* main.m in Sources */,
 				7E4BC71018E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 			);
