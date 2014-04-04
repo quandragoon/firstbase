@@ -92,6 +92,7 @@
 		7E68E48318EE77D1003FBFC0 /* NewsfeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsfeedViewController.m; sourceTree = "<group>"; };
 		7E68E48518EE7AE8003FBFC0 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		7E68E48618EE7AE8003FBFC0 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		7E68E48C18EE7EA6003FBFC0 /* ObjectNameConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectNameConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +190,7 @@
 				7E68E48318EE77D1003FBFC0 /* NewsfeedViewController.m */,
 				7E68E48518EE7AE8003FBFC0 /* SettingsViewController.h */,
 				7E68E48618EE7AE8003FBFC0 /* SettingsViewController.m */,
+				7E68E48C18EE7EA6003FBFC0 /* ObjectNameConstants.h */,
 			);
 			path = FirstBase;
 			sourceTree = "<group>";

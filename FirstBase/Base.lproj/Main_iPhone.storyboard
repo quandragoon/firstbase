@@ -190,7 +190,7 @@
         <scene sceneID="Eh8-nA-cB8">
             <objects>
                 <tabBarController storyboardIdentifier="main-controller" definesPresentationContext="YES" id="QoV-OS-8vg" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Crv-Fh-xNH">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

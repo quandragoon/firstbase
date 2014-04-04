@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 Quan Nguyen. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "NewsfeedViewController.h"
+#import "ObjectNameConstants.h"
 
 @interface NewsfeedViewController ()
 
@@ -26,6 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
+    PFQuery *query = [PFQuery queryWithClassName:kGameObject];
+//    [query findObjectsInBackgroundWithBlock:<#^(NSArray *objects, NSError *error)block#>:]
+//        NSLog(@"%@", gameScore);
+//    }];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
