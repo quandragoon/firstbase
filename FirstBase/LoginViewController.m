@@ -18,8 +18,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([PFUser currentUser] != nil) {
+        [(AppDelegate*)([[UIApplication sharedApplication] delegate]) pushMainController];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,7 +39,7 @@
              [(AppDelegate*)([[UIApplication sharedApplication] delegate]) pushMainController];
          }
          else {
-             [[[UIAlertView alloc] initWithTitle:@"Cannot Login" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
+             [[[UIAlertView alloc] initWithTitle:@"Cannot Login" message:[error.userInfo objectForKey:@"error"] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
          }
     }];
 }

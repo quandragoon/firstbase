@@ -40,7 +40,7 @@
             }];
         }
         else {
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error.userInfo objectForKey:@"error"] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
         }
     }];
 }
