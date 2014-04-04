@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-// Migrate to use https://parse.com/tutorials/login-and-signup-views
+// https://parse.com/docs/ios_guide#users/iOS
 
 @interface LoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *txtUsername;

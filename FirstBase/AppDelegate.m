@@ -19,6 +19,7 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
                                                     UIRemoteNotificationTypeBadge |
                                                     UIRemoteNotificationTypeSound];
+    
     return YES;
 }
 
@@ -63,9 +64,13 @@
 
 - (void)pushMainController {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    UINavigationController *mainController = [sb instantiateViewControllerWithIdentifier:@"main-navigation-controller"];
+    UIViewController *mainController = [sb instantiateViewControllerWithIdentifier:@"main-controller"];
     [self.window.rootViewController presentViewController:mainController animated:YES completion:nil];
 }
 
+
+- (void)popMainController {
+    [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

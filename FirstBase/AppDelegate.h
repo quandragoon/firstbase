@@ -16,5 +16,6 @@
 @property (strong, nonatomic) UIViewController *loginController;
 
 - (void)pushMainController;
+- (void)popMainController;
 
 @end

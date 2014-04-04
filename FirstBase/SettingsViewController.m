@@ -1,18 +1,20 @@
 //
-//  NewsfeedViewController.m
+//  SettingsViewController.m
 //  FirstBase
 //
 //  Created by Changping Chen on 4/4/14.
 //  Copyright (c) 2014 Quan Nguyen. All rights reserved.
 //
 
-#import "NewsfeedViewController.h"
+#import <Parse/Parse.h>
+#import "SettingsViewController.h"
+#import "AppDelegate.h"
 
-@interface NewsfeedViewController ()
+@interface SettingsViewController ()
 
 @end
 
-@implementation NewsfeedViewController
+@implementation SettingsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,6 +34,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)logoutClicked:(id)sender
+{
+    [PFUser logOut];
+    [(AppDelegate*)([[UIApplication sharedApplication] delegate]) popMainController];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,8 +66,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"newsfeed-cell";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
     
     return cell;
 }
