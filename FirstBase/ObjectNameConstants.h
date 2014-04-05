@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 
 
-NSString const *kGameTypeBasketball = @"kGameTypeBasketball";
-NSString const *kGameTypeVolleyball = @"kGameTypeVolleyball";
-NSString const *kGameObject = @"kGameObject";
+#define kGameTypeBasketball @"Basketball"
+#define kGameTypeVolleyball @"Volleyball"
+#define kGameTypeFrisbee @"Frisbee"
+#define kGameObject @"Game"
+

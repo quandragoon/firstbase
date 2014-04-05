@@ -31,6 +31,7 @@
     user.email = [self.txtEmail text];
     user.password = [self.txtPassword text];
     user.username = [self.txtUsername text];
+    [user setObject:[self.txtName text] forKey:@"name"];
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

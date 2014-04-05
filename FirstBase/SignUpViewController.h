@@ -13,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *txtUsername;
 @property (nonatomic, weak) IBOutlet UITextField *txtPassword;
 @property (nonatomic, weak) IBOutlet UITextField *txtEmail;
+@property (nonatomic, weak) IBOutlet UITextField *txtName;
 
 - (IBAction)cancelClicked:(id)sender;
 - (IBAction)signupClicked:(id)sender;

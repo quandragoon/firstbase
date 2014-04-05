@@ -7,8 +7,10 @@
 //
 
 #import <Parse/Parse.h>
+#import "NSDate+Utilities.h"
 #import "NewsfeedViewController.h"
 #import "ObjectNameConstants.h"
+#import "Resources.h"
 
 @interface NewsfeedViewController ()
 
@@ -31,9 +33,10 @@
 
     
     PFQuery *query = [PFQuery queryWithClassName:kGameObject];
-//    [query findObjectsInBackgroundWithBlock:<#^(NSArray *objects, NSError *error)block#>:]
-//        NSLog(@"%@", gameScore);
-//    }];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
+        [self.tableView reloadData];
+    }];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -52,23 +55,47 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.feedItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"newsfeed-cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *identifier = @"newsfeed-cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+
+    PFObject *game = [self.feedItems objectAtIndex:indexPath.row];
+    
+    PFRelation *players = [game relationForKey:@"players"];
+    PFQuery *playersQuery = [players query];
+    [playersQuery setLimit:8];
+    [playersQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        UITableViewCell *c = [self.tableView cellForRowAtIndexPath:indexPath];
+        if (c) {
+            NSMutableArray *playerNames = [NSMutableArray arrayWithCapacity:8];
+            for (PFUser *player in objects) {
+                [playerNames addObject:[player objectForKey:@"name"]];
+            }
+            [(UILabel*)[c viewWithTag:3] setText:[playerNames componentsJoinedByString:@", "]];
+        }
+    }];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm dd MMMM yyyy"]; // use one d for 7 October instead of 07 October
+
+    [(UILabel*)[cell viewWithTag:1] setText:[dateFormatter stringFromDate:[game objectForKey:@"time"]]];
+    UIImage *i = [Resources iconForSportType:[game objectForKey:@"type"]];
+    [(UIImageView*)[cell viewWithTag:2] setImage:i];
+    [(UILabel*)[cell viewWithTag:3] setText:@"Loading..."];
+
     return cell;
 }
 

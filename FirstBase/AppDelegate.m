@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
+#import "ObjectNameConstants.h"
 
 
 @implementation AppDelegate
@@ -19,6 +20,7 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
                                                     UIRemoteNotificationTypeBadge |
                                                     UIRemoteNotificationTypeSound];
+//    [self performSelector:@selector(loadTestData) withObject:nil afterDelay:5];
     
     return YES;
 }
@@ -71,6 +73,18 @@
 
 - (void)popMainController {
     [self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)loadTestData {
+    PFObject *game = [PFObject objectWithClassName:kGameObject];
+    game[@"name"] = @"Theta Xi Ultimate";
+    game[@"type"] = kGameTypeFrisbee;
+    game[@"creator"] = [PFUser currentUser];
+    PFRelation *players = [game relationforKey:@"players"];
+    [players addObject: [PFUser currentUser]];
+    game[@"location"] = @"Kresge Field";
+    game[@"time"] = [NSDate dateWithTimeIntervalSinceNow:3600 * 24];
+    [game saveInBackground];
 }
 
 @end

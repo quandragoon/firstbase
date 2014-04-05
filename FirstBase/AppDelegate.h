@@ -17,5 +17,6 @@
 
 - (void)pushMainController;
 - (void)popMainController;
+- (void)loadTestData;
 
 @end

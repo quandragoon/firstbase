@@ -1,20 +1,20 @@
 //
-//  SettingsViewController.m
+//  ProfileViewController.m
 //  FirstBase
 //
-//  Created by Changping Chen on 4/4/14.
+//  Created by Changping Chen on 4/5/14.
 //  Copyright (c) 2014 Quan Nguyen. All rights reserved.
 //
 
 #import <Parse/Parse.h>
-#import "SettingsViewController.h"
+#import "ProfileViewController.h"
 #import "AppDelegate.h"
 
-@interface SettingsViewController ()
+@interface ProfileViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation ProfileViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
 
+    if (self.user == nil) {
+        self.user = [PFUser currentUser];
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -39,7 +42,7 @@
 - (void)logoutClicked:(id)sender
 {
     [PFUser logOut];
-    [(AppDelegate*)([[UIApplication sharedApplication] delegate]) popMainController];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] popMainController];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,31 +51,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
+//#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//#warning Incomplete method implementation.
+//    // Return the number of rows in the section.
+//    return 0;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *CellIdentifier = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//    
+//    // Configure the cell...
+//    
+//    return cell;
+//}
 
 /*
 // Override to support conditional editing of the table view.

@@ -245,7 +245,7 @@ static const int kStateKey;
         padding = kMinimumScrollOffsetPadding;
     }
     
-    // Ideal offset places the subview rectangle origin "padding" points from the top of the scrollview.
+    // Ideal offs/Users/ccp/code/FirstBase/FirstBase/UIScrollView+TPKeyboardAvoidingAdditions.met places the subview rectangle origin "padding" points from the top of the scrollview.
     // If there is a top contentInset, also compensate for this so that subviewRect will not be placed under
     // things like navigation bars.
     offset = subviewRect.origin.y - padding - self.contentInset.top;
