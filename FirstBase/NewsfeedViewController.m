@@ -99,6 +99,13 @@
     return cell;
 }
 
+- (void)createClicked:(id)sender
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    UIViewController *mainController = [sb instantiateViewControllerWithIdentifier:@"create-game-controller"];
+    [self presentViewController:mainController animated:YES completion:nil];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateGameViewController : UIViewController
+@interface CreateGameViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property (nonatomic) IBOutlet UIPickerView *sportPicker;
+@property (nonatomic) IBOutlet UIDatePicker *timePicker;
+@property (nonatomic) IBOutlet UITextField *nameInput;
+@property (nonatomic) IBOutlet UIPickerView *locationPicker;
+@property (nonatomic) NSArray *locationOptions;
+@property (nonatomic) NSArray *sportOptions;
 
 - (IBAction)cancelClicked:(id)sender;
 

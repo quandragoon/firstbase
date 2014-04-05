@@ -7,6 +7,7 @@
 //
 
 #import "CreateGameViewController.h"
+#import "ObjectNameConstants.h"
 
 @interface CreateGameViewController ()
 
@@ -25,13 +26,43 @@
 
 - (void)cancelClicked:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (pickerView == self.locationPicker) {
+        return [self.locationOptions count];
+    }
+    if (pickerView == self.sportPicker) {
+        return [self.sportOptions count];
+    }
+    return 0;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (pickerView == self.locationPicker) {
+        return [self.locationOptions objectAtIndex:row];
+    }
+    if (pickerView == self.sportPicker) {
+        return [self.sportOptions objectAtIndex:row];
+    }
+    return nil;
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.locationOptions = [NSArray arrayWithObjects:@"Z Center", @"Bubble", @"Du Pont", nil];
+    self.sportOptions = [NSArray arrayWithObjects:kGameTypeFrisbee, kGameTypeBasketball, kGameTypeVolleyball, nil];
 }
 
 - (void)didReceiveMemoryWarning
