@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface InviteFriendsViewController : UITableViewController
 
+@property (nonatomic) PFObject *game;
 @property (nonatomic) NSArray *friends;
 @property (nonatomic) NSMutableArray *selectedFriends;
+
+- (IBAction)doneClicked:(id)sender;
 
 @end

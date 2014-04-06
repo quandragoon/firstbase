@@ -146,7 +146,7 @@
             </objects>
             <point key="canvasLocation" x="1267" y="901"/>
         </scene>
-        <!--Create Game View Controller - Create Game-->
+        <!--Create Game View Controller - Step 1: Info-->
         <scene sceneID="2Sm-PO-ccK">
             <objects>
                 <viewController id="oq7-cA-d58" customClass="CreateGameViewController" sceneMemberID="viewController">
@@ -158,127 +158,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T9T-kG-0mE">
-                                <rect key="frame" x="0.0" y="65" width="320" height="456"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <containerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jsg-yH-qu8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="456"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="RIW-SE-Otv" kind="embed" id="eXp-SW-aCd"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                        <size key="value" width="320" height="700"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sport" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="di0-cW-l8w">
+                                <rect key="frame" x="20" y="264" width="51" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWE-e5-5x6">
+                                <rect key="frame" x="20" y="147" width="69" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CSw-P4-e1u">
+                                <rect key="frame" x="97" y="311" width="203" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oq7-cA-d58" id="b2J-JW-8h7"/>
+                                    <outlet property="delegate" destination="oq7-cA-d58" id="wxd-Kn-XlK"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Let's Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOJ-iR-aMw">
+                                <rect key="frame" x="85" y="79" width="150" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ly1-bN-1Qh">
+                                <rect key="frame" x="97" y="169" width="203" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oq7-cA-d58" id="63g-v2-Jd5"/>
+                                    <outlet property="delegate" destination="oq7-cA-d58" id="LBb-ah-dMb"/>
+                                </connections>
+                            </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pZO-f7-sm3">
+                                <rect key="frame" x="97" y="143" width="203" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="oq7-cA-d58" id="2BQ-kD-voJ"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM0-TB-8fZ">
+                                <rect key="frame" x="20" y="406" width="69" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Game" id="QR1-kf-RlZ">
+                    <navigationItem key="navigationItem" title="Step 1: Info" id="QR1-kf-RlZ">
+                        <barButtonItem key="backBarButtonItem" title="Info" id="oSL-Ta-ON7"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qX3-88-LuG">
                             <connections>
                                 <action selector="cancelClicked:" destination="oq7-cA-d58" id="BsM-Ik-v66"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Invite" id="VdC-Nu-OAB">
+                            <connections>
+                                <action selector="inviteClicked:" destination="oq7-cA-d58" id="Rip-tR-mn5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="locationPicker" destination="CSw-P4-e1u" id="neN-Dx-YJj"/>
+                        <outlet property="sportPicker" destination="ly1-bN-1Qh" id="4fb-Sh-3o3"/>
                         <segue destination="Pfc-7c-k4r" kind="push" id="q21-UL-0og"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0M1-Jj-DBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="710" y="2620"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="xK1-sa-SbR">
-            <objects>
-                <viewController id="RIW-SE-Otv" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="K32-HP-yQI"/>
-                        <viewControllerLayoutGuide type="bottom" id="KAA-va-ve9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="M4n-nS-cem">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XaD-hJ-Um1">
-                                <rect key="frame" x="97" y="407" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Let's Play!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SR9-OM-0ot">
-                                <rect key="frame" x="85" y="20" width="150" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iK1-as-HmV">
-                                <rect key="frame" x="97" y="252" width="203" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="oq7-cA-d58" id="dye-L9-bXZ"/>
-                                    <outlet property="delegate" destination="oq7-cA-d58" id="KEL-sc-4Ye"/>
-                                </connections>
-                            </pickerView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTa-ul-ZwU">
-                                <rect key="frame" x="20" y="88" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Private" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGP-nK-ZQu">
-                                <rect key="frame" x="20" y="411" width="69" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Private events can only be seen by your friends" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="203" translatesAutoresizingMaskIntoConstraints="NO" id="SFC-eg-vkb">
-                                <rect key="frame" x="97" y="446" width="203" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sport" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cu-uB-V3y">
-                                <rect key="frame" x="20" y="205" width="51" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="db4-Vf-1qE">
-                                <rect key="frame" x="97" y="110" width="203" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="oq7-cA-d58" id="OHn-3x-tOl"/>
-                                    <outlet property="delegate" destination="oq7-cA-d58" id="uYI-10-Dm5"/>
-                                </connections>
-                            </pickerView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fy-9H-Q5o">
-                                <rect key="frame" x="20" y="347" width="69" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FDD-NP-LdP">
-                                <rect key="frame" x="97" y="84" width="203" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="1000"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MzL-CE-xan" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="712" y="3301"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9E3-9f-co2">
@@ -295,16 +248,16 @@
             </objects>
             <point key="canvasLocation" x="35" y="2620"/>
         </scene>
-        <!--Invite Friends View Controller - Invite Friends-->
+        <!--Invite Friends View Controller - Step 2: Invite Friends-->
         <scene sceneID="jfo-bc-ZCZ">
             <objects>
-                <tableViewController id="Pfc-7c-k4r" customClass="InviteFriendsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="invite-friends-controller" id="Pfc-7c-k4r" customClass="InviteFriendsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Boi-bO-Ot2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SGh-de-fdK">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InviteFriendCell" id="SGh-de-fdK">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SGh-de-fdK" id="zfr-xb-dag">
@@ -318,7 +271,14 @@
                             <outlet property="delegate" destination="Pfc-7c-k4r" id="q2H-Ia-U0q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Invite Friends" id="vUV-N0-Xgd"/>
+                    <navigationItem key="navigationItem" title="Step 2: Invite Friends" id="vUV-N0-Xgd">
+                        <barButtonItem key="backBarButtonItem" title="Invite" id="GAu-cw-ScH"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done!" id="hg6-bx-UzK">
+                            <connections>
+                                <action selector="doneClicked:" destination="Pfc-7c-k4r" id="jdJ-XF-FVU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbc-Ua-xgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,5 +16,6 @@
 @property (nonatomic) IBOutlet UIImageView *avatarView;
 
 - (IBAction)logoutClicked:(id)sender;
+- (void)avatarClickToEdit;
 
 @end

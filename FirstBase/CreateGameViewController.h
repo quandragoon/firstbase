@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface CreateGameViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CreateGameViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic) IBOutlet UIPickerView *sportPicker;
 @property (nonatomic) IBOutlet UIDatePicker *timePicker;
@@ -16,7 +17,9 @@
 @property (nonatomic) IBOutlet UIPickerView *locationPicker;
 @property (nonatomic) NSArray *locationOptions;
 @property (nonatomic) NSArray *sportOptions;
+@property (nonatomic) PFObject *game;
 
+- (IBAction)inviteClicked:(id)sender;
 - (IBAction)cancelClicked:(id)sender;
 
 @end

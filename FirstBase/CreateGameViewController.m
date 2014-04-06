@@ -8,6 +8,7 @@
 
 #import "CreateGameViewController.h"
 #import "ObjectNameConstants.h"
+#import "InviteFriendsViewController.h"
 
 @interface CreateGameViewController ()
 
@@ -27,6 +28,15 @@
 - (void)cancelClicked:(id)sender
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)inviteClicked:(id)sender
+{
+    self.game setObject:self.timePicker  forKey:<#(NSString *)#>
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    InviteFriendsViewController *inviteController = [sb instantiateViewControllerWithIdentifier:@"invite-friends-controller"];
+    [inviteController setGame:self.game];
+    [self.navigationController pushViewController:inviteController animated:YES];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -56,6 +66,11 @@
     return nil;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return true;
+}
 
 - (void)viewDidLoad
 {

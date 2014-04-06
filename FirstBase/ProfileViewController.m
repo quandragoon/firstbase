@@ -31,7 +31,14 @@
 
     if (self.user == nil) {
         self.user = [PFUser currentUser];
+        
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(avatarClickToEdit)];
+        [self.avatarView addGestureRecognizer:singleTap];
+//        [self.avatarView setMultipleTouchEnabled:YES];
+        [self.avatarView setUserInteractionEnabled:YES];
     }
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -43,6 +50,11 @@
 {
     [PFUser logOut];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] popMainController];
+}
+
+- (void)avatarClickToEdit
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -80,6 +80,7 @@
     game[@"name"] = @"Theta Xi Ultimate";
     game[@"type"] = kGameTypeFrisbee;
     game[@"creator"] = [PFUser currentUser];
+    [game relationForKey:@"invited"];
     PFRelation *players = [game relationforKey:@"players"];
     [players addObject: [PFUser currentUser]];
     game[@"location"] = @"Kresge Field";
