@@ -65,14 +65,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"newsfeed-cell";
+    PFObject *game = [self.feedItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
 
-    PFObject *game = [self.feedItems objectAtIndex:indexPath.row];
-    NSLog(@"%@, %@",[game objectForKey:@"Sport"], [game objectForKey:@"Location"]);
     
     PFRelation *players = [game relationForKey:@"players"];
     PFQuery *playersQuery = [players query];
@@ -92,9 +91,10 @@
     [dateFormatter setDateFormat:@"HH:mm dd MMMM yyyy"]; // use one d for 7 October instead of 07 October
 
     [(UILabel*)[cell viewWithTag:1] setText:[dateFormatter stringFromDate:[game objectForKey:@"time"]]];
-    UIImage *i = [Resources iconForSportType:[game objectForKey:@"type"]];
+    UIImage *i = [Resources iconForSportType:[game objectForKey:@"Sport"]];
     [(UIImageView*)[cell viewWithTag:2] setImage:i];
     [(UILabel*)[cell viewWithTag:3] setText:@"Loading..."];
+    [(UILabel*)[cell viewWithTag:4] setText:[game objectForKey:@"Location"]];
 
     return cell;
 }
