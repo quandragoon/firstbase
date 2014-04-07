@@ -32,6 +32,9 @@
         self.friends = objects;
         [self.tableView reloadData];
     }];
+
+    NSLog(self.game[@"sport"]);
+    
     self.selectedFriends = [NSMutableArray array];
 }
 

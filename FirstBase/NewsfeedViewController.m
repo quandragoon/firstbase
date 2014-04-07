@@ -30,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     
     PFQuery *query = [PFQuery queryWithClassName:kGameObject];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -73,6 +72,7 @@
     }
 
     PFObject *game = [self.feedItems objectAtIndex:indexPath.row];
+    NSLog(@"%@, %@",[game objectForKey:@"Sport"], [game objectForKey:@"Location"]);
     
     PFRelation *players = [game relationForKey:@"players"];
     PFQuery *playersQuery = [players query];
@@ -104,6 +104,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     UIViewController *mainController = [sb instantiateViewControllerWithIdentifier:@"create-game-controller"];
     [self presentViewController:mainController animated:YES completion:nil];
+    // [self viewDidLoad];
 }
 
 /*

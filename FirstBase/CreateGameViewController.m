@@ -32,10 +32,18 @@
 
 - (void)inviteClicked:(id)sender
 {
-    self.game setObject:self.timePicker  forKey:<#(NSString *)#>
+    // self.game setObject:self.timePicker  forKey:<#(NSString *)#>
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     InviteFriendsViewController *inviteController = [sb instantiateViewControllerWithIdentifier:@"invite-friends-controller"];
-    [inviteController setGame:self.game];
+    
+    // save information to self.game
+    self.game[@"Sport"] = [self.sportOptions objectAtIndex:[self.sportPicker selectedRowInComponent:0]];
+    self.game[@"Location"] = [self.locationOptions objectAtIndex:[self.locationPicker selectedRowInComponent:0]];
+    // self.game[@"Time"] = [self.timePicker]
+    
+    [self.game save];
+    inviteController.game = self.game;
+    // NSLog(@"Object id %@", [self.game objectId]);
     [self.navigationController pushViewController:inviteController animated:YES];
 }
 
@@ -78,6 +86,7 @@
     
     self.locationOptions = [NSArray arrayWithObjects:@"Z Center", @"Bubble", @"Du Pont", nil];
     self.sportOptions = [NSArray arrayWithObjects:kGameTypeFrisbee, kGameTypeBasketball, kGameTypeVolleyball, nil];
+    self.game = [PFObject objectWithClassName:kGameObject];
 }
 
 - (void)didReceiveMemoryWarning
