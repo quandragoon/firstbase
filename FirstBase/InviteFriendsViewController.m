@@ -33,7 +33,6 @@
         [self.tableView reloadData];
     }];
 
-    NSLog(self.game[@"sport"]);
     
     self.selectedFriends = [NSMutableArray array];
 }
@@ -52,6 +51,8 @@
     }
     [self.game saveInBackground];
     [self dismissViewControllerAnimated:YES completion:nil];
+    // [self.navigationController pushViewController:inviteController animated:YES];
+    
 }
 
 #pragma mark - Table view data source

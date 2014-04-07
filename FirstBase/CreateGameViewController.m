@@ -39,7 +39,11 @@
     // save information to self.game
     self.game[@"Sport"] = [self.sportOptions objectAtIndex:[self.sportPicker selectedRowInComponent:0]];
     self.game[@"Location"] = [self.locationOptions objectAtIndex:[self.locationPicker selectedRowInComponent:0]];
-    // self.game[@"Time"] = [self.timePicker]
+    self.game[@"creator"] = [PFUser currentUser];
+    self.game[@"Host"] = [[PFUser currentUser] objectForKey:@"name"];
+    NSDate *selected = [self.timePicker date];
+    // NSLog(@"%f",[selected timeIntervalSince1970]);
+    self.game[@"time"] = selected;
     
     [self.game save];
     inviteController.game = self.game;
@@ -82,8 +86,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
     self.locationOptions = [NSArray arrayWithObjects:@"Z Center", @"Bubble", @"Du Pont", nil];
     self.sportOptions = [NSArray arrayWithObjects:kGameTypeFrisbee, kGameTypeBasketball, kGameTypeVolleyball, nil];
     self.game = [PFObject objectWithClassName:kGameObject];
@@ -93,6 +95,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void) viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = self.contentView.bounds.size;
 }
 
 @end

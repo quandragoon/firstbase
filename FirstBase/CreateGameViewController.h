@@ -19,6 +19,9 @@
 @property (nonatomic) NSArray *sportOptions;
 @property (nonatomic) PFObject *game;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
 - (IBAction)inviteClicked:(id)sender;
 - (IBAction)cancelClicked:(id)sender;
 

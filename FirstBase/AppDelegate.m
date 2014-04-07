@@ -84,7 +84,7 @@
     PFRelation *players = [game relationforKey:@"players"];
     [players addObject: [PFUser currentUser]];
     game[@"location"] = @"Kresge Field";
-    game[@"time"] = [NSDate dateWithTimeIntervalSinceNow:3600 * 24];
+    // game[@"time"] = [NSDate dateWithTimeIntervalSinceNow:3600 * 24];
     [game saveInBackground];
 }
 

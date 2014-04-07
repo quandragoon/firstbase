@@ -44,6 +44,15 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
+- (void) viewWillAppear:(BOOL)animated {
+    PFQuery *query = [PFQuery queryWithClassName:kGameObject];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
+        [self.tableView reloadData];
+    }];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -80,6 +89,7 @@
         UITableViewCell *c = [self.tableView cellForRowAtIndexPath:indexPath];
         if (c) {
             NSMutableArray *playerNames = [NSMutableArray arrayWithCapacity:8];
+            [playerNames addObject:[game objectForKey:@"Host"]];
             for (PFUser *player in objects) {
                 [playerNames addObject:[player objectForKey:@"name"]];
             }
@@ -104,8 +114,9 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     UIViewController *mainController = [sb instantiateViewControllerWithIdentifier:@"create-game-controller"];
     [self presentViewController:mainController animated:YES completion:nil];
-    // [self viewDidLoad];
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.
