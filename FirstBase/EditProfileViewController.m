@@ -47,8 +47,8 @@
     self.volleyballLevel.value = [[self.user objectForKey:@"volleyballLevel"] floatValue];
 
     self.name.text = self.user[@"name"];
-    self.gender.text = self.user[@"Gender"];
-    self.age.text = self.user[@"Age"];
+    self.gender.text = self.user[@"gender"];
+    self.age.text = self.user[@"age"];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -93,8 +93,8 @@
     self.user[@"frisbeeLevel"] = [[NSNumber alloc]initWithFloat:[self.frisbeeLevel value]];
     self.user[@"volleyballLevel"] = [[NSNumber alloc]initWithFloat:[self.volleyballLevel value]];
     self.user[@"name"] = self.name.text;
-    self.user[@"Gender"] = self.gender.text;
-    self.user[@"Age"] = self.age.text;
+    self.user[@"gender"] = self.gender.text;
+    self.user[@"age"] = self.age.text;
     [self.user saveInBackground];
     
     [self.navigationController popViewControllerAnimated:YES];

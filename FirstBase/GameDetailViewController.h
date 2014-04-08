@@ -9,19 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface GameDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
-    IBOutlet UITableView *participantTable;
-    NSMutableArray *participants;
+@interface GameDetailViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>{
 }
 
 @property (nonatomic) PFObject *game;
+@property (nonatomic) IBOutlet UITableViewCell *infoCell;
 @property (weak, nonatomic) IBOutlet UIImageView *gameImage;
-@property (weak, nonatomic) IBOutlet UIButton *joinGame;
+@property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UILabel *location;
 @property (weak, nonatomic) IBOutlet UILabel *time;
-@property (weak, nonatomic) IBOutlet UILabel *host;
+@property (weak, nonatomic) IBOutlet UIButton *host;
+@property (nonatomic) NSMutableArray *participants;
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
+- (IBAction)joinClicked:(id)sender;
+- (IBAction)hostClicked:(id)sender;
 
 @end

@@ -38,8 +38,11 @@
     user[@"tennisLevel"] = def;
     user[@"frisbeeLevel"] = def;
     user[@"volleyballLevel"] = def;
-    user[@"Gender"] = @"";
-    user[@"Age"] = @"";
+    user[@"gender"] = @"";
+    user[@"age"] = @"";
+    
+    NSData *avatarData = UIImagePNGRepresentation([UIImage imageNamed:@"beaver.png"]);
+    user[@"avatar"] = [PFFile fileWithName:[NSString stringWithFormat:@"%@_pic.png", user.username] data:avatarData];
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

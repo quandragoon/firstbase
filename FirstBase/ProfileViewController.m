@@ -27,7 +27,7 @@
     return self;
 }
 
-- (NSString*)calculateSkillLevel:(float)grade{
++ (NSString*)calculateSkillLevel:(float)grade{
     if (grade < 1.0)
         return @"Beginner";
     else if (grade < 2.0)
@@ -39,8 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    if (self.user == nil) {
+    
+    if (self.user == nil || [self.user isEqual:[PFUser currentUser]]) {
         self.user = [PFUser currentUser];
         
         UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -50,30 +50,34 @@
     }
     else {
         // hide Edit button
+        [self.clickToEditLabel setHidden:YES];
         self.navigationItem.leftBarButtonItem = nil;
     }
+    
+    if ( self != [self.navigationController.viewControllers objectAtIndex:0] ) {
+        self.navigationItem.leftBarButtonItem = nil;
+    }
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self.avatarView setFile:[self.user objectForKey:@"avatar"]];
+    [self.avatarView loadInBackground];
     
     [self.nameLabel setText:self.user[@"name"]];
     [self.infoLabel setText:@"Age: " ];
-    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Age"] ?: @""];
+    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"age"] ?: @""];
     self.infoLabel.text = [self.infoLabel.text stringByAppendingString:@"\nGender: "];
-    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Gender"] ?: @""];
+    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"gender"] ?: @""];
+    
     
     // print skill level
-    [self.basketballSkill setText:[self calculateSkillLevel:[self.user[@"basketballLevel"] floatValue]]];
-    [self.soccerSkill setText:[self calculateSkillLevel:[self.user[@"soccerLevel"] floatValue]]];
-    [self.tennisSkill setText:[self calculateSkillLevel:[self.user[@"tennisLevel"] floatValue]]];
-    [self.frisbeeSkill setText:[self calculateSkillLevel:[self.user[@"frisbeeLevel"] floatValue]]];
-    [self.volleyballSkill setText:[self calculateSkillLevel:[self.user[@"volleyballLevel"] floatValue]]];
-
+    [self.basketballSkill setText:[[self class] calculateSkillLevel:[self.user[@"basketballLevel"] floatValue]]];
+    [self.soccerSkill setText:[[self class] calculateSkillLevel:[self.user[@"soccerLevel"] floatValue]]];
+    [self.tennisSkill setText:[[self class] calculateSkillLevel:[self.user[@"tennisLevel"] floatValue]]];
+    [self.frisbeeSkill setText:[[self class] calculateSkillLevel:[self.user[@"frisbeeLevel"] floatValue]]];
+    [self.volleyballSkill setText:[[self class] calculateSkillLevel:[self.user[@"volleyballLevel"] floatValue]]];
 }
-
-
-- (void)viewWillAppear {
-    
-}
-
 
 
 - (void)logoutClicked:(id)sender
@@ -81,7 +85,6 @@
     [PFUser logOut];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] popMainController];
 }
-
 
 
 - (void)editClicked:(id)sender{
@@ -97,12 +100,27 @@
 }
 
 
-
 - (void)avatarClickToEdit
 {
-    
+    self.picker = [[GKImagePicker alloc] init];
+    self.picker.delegate = self;
+    self.picker.cropper.cropSize = CGSizeMake(300., 300.);
+    self.picker.cropper.rescaleImage = YES;
+    self.picker.cropper.rescaleFactor = 1.0;
+    self.picker.cropper.dismissAnimated = NO;
+    [self.picker presentPicker];
 }
 
+
+- (void)imagePickerDidFinish:(GKImagePicker *)imagePicker withImage:(UIImage *)image
+{
+    self.picker = nil;
+    NSData* data = UIImagePNGRepresentation(image);
+    NSString *name = [NSString stringWithFormat:@"%@_pic.png", [[PFUser currentUser] username]];
+    PFFile *avatar = [PFFile fileWithName:name data:data];
+    [[PFUser currentUser] setObject:avatar forKey:@"avatar"];
+    [[PFUser currentUser] saveInBackground];
+}
 
 
 - (void)didReceiveMemoryWarning

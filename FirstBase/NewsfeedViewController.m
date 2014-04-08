@@ -31,13 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    PFQuery *query = [PFQuery queryWithClassName:kGameObject];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
-        [self.tableView reloadData];
-    }];
-
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -103,7 +96,7 @@
         UITableViewCell *c = [self.tableView cellForRowAtIndexPath:indexPath];
         if (c) {
             NSMutableArray *playerNames = [NSMutableArray arrayWithCapacity:8];
-            [playerNames addObject:[game objectForKey:@"host"]];
+//            [playerNames addObject:[game objectForKey:@"host"]];
             for (PFUser *player in objects) {
                 [playerNames addObject:[player objectForKey:@"name"]];
             }

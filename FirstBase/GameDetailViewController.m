@@ -8,6 +8,7 @@
 
 #import "GameDetailViewController.h"
 #import "Resources.h"
+#import "ProfileViewController.h"
 
 @interface GameDetailViewController ()
 
@@ -32,58 +33,156 @@
     [dateFormatter setDateFormat:@"HH:mm dd MMMM yyyy"];
     
     self.location.text = self.game[@"location"];
-    self.host.text = self.game[@"host"];
+    [self.host setTitle:self.game[@"host"] forState:UIControlStateNormal];
     self.time.text = [dateFormatter stringFromDate:self.game[@"time"]];
     
     UIImage *i = [Resources iconForSportType:self.game[@"sport"]];
     [self.gameImage setImage:i];
-
     
-    participants = self.game[@"players"];
-    // [participants addObject:self.game[@"creator"]];
-    participants  = [[NSMutableArray alloc] initWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
-    // Do any additional setup after loading the view.
+    self.participants = [NSMutableArray array];
+    PFRelation *relation = [self.game relationForKey:@"players"];
+    [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.participants = [NSMutableArray arrayWithArray:objects];
+        if ([self.participants containsObject:[PFUser currentUser]]) {
+            [self.joinButton setTitle:@"UnJoin!" forState:UIControlStateNormal];
+        }
+        else {
+            [self.joinButton setTitle:@"Join!" forState:UIControlStateNormal];
+        }
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    }];
     
+//    NSMutableArray *playerIds = [NSMutableArray arrayWithCapacity:[self.game[@"players"] count]];
+//    for (PFUser *p in self.game[@"players"]) {
+//        [playerIds addObject:[p objectId]];
+//    }
+//    self.participants = [NSMutableArray array];
+//    PFQuery *query = [PFUser query];
+//    [query whereKey:@"objectId" containedIn:playerIds];
+//    [query orderByAscending:@"name"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        for (PFUser *u in objects) {
+//            [self.participants addObject:u];
+//        }
+//        if ([self.participants containsObject:[PFUser currentUser]]) {
+//            [self.joinButton setTitle:@"Join!" forState:UIControlStateNormal];
+//        }
+//        else {
+//            [self.joinButton setTitle:@"Unjoin!" forState:UIControlStateNormal];
+//        }
+//        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+//    }];
+}
+    
+- (void)joinClicked:(UIButton*)sender
+{
+    if ([self.participants containsObject:[PFUser currentUser]]) {
+        NSInteger row = [self.participants indexOfObject:[PFUser currentUser]];
+        [[self.game relationForKey:@"players"] removeObject:[PFUser currentUser]];
+        [self.participants removeObject:[PFUser currentUser]];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:1]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [sender setTitle:@"Join!" forState:UIControlStateNormal];
+    }
+    else {
+        [self.participants addObject:[PFUser currentUser]];
+        [[self.game relationForKey:@"players"] addObject:[PFUser currentUser]];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[self.participants count] - 1 inSection:1]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [sender setTitle:@"Unjoin!" forState:UIControlStateNormal];
+    }
+//    [self.game setObject:[NSArray arrayWithArray:self.participants] forKey:@"players"];
+    [self.game saveInBackground];
 }
 
-
-- (void) viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    [self.scrollView layoutIfNeeded];
-    self.scrollView.contentSize = self.contentView.bounds.size;
+- (void)hostClicked:(id)sender
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    ProfileViewController *viewController = [sb instantiateViewControllerWithIdentifier:@"profile-controller"];
+    PFUser *creator = [self.game objectForKey:@"creator"];
+    [creator refreshInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        [viewController setUser:(PFUser*)object];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }];
 }
-
-
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return @"Info";
+            break;
+        case 1:
+            return [NSString stringWithFormat:@"%i players.", [self.participants count]];
+        default:
+            break;
+    }
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [participants count];
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return [self.participants count];
+        default:
+            break;
+    }
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 0:
+            return 140.0;
+            break;
+        case 1:
+            return 99;
+        default:
+            break;
+    }
+    return 0;
 }
 
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-    // PFObject *player = [participants objectAtIndex:indexPath.row];
+    if (indexPath.section == 0)
+        return self.infoCell;
+
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"participant-cell" forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"participant-cell"];
+    }
     
-    UITableViewCell *cell = [participantTable dequeueReusableCellWithIdentifier:@"participant-cell" forIndexPath:indexPath];
+    PFUser *player = [self.participants objectAtIndex:indexPath.row];
+    PFImageView* avatarView = (PFImageView*)[cell viewWithTag:1];
+    PFFile *avatar = [player objectForKey:@"avatar"];
+    [avatarView setFile:avatar];
+    [avatarView loadInBackground];
     
-    
-    // cell.textLabel.text = [participants objectAtIndex:indexPath.row];
+    [(UILabel*)[cell viewWithTag:2] setText:[player objectForKey:@"name"]];
+    [(UILabel*)[cell viewWithTag:3] setText:[ProfileViewController calculateSkillLevel:[player[@"volleyballLevel"] floatValue]]];
+//    [(UILabel*)[cell viewWithTag:4] setText:[player objectForKey:@"name"]];
     
     return cell;
 }
 
-
-
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    ProfileViewController *viewController = [sb instantiateViewControllerWithIdentifier:@"profile-controller"];
+    [viewController setUser:[self.participants objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {

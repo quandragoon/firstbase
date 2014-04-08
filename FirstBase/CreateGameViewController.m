@@ -49,10 +49,11 @@
     self.game[@"description"] = [self.descInput text];
     NSDate *selected = [self.timePicker date];
     // NSLog(@"%f",[selected timeIntervalSince1970]);
+    [[self.game relationForKey:@"players"] addObject:[PFUser currentUser]];
     self.game[@"time"] = selected;
     self.game[@"friendsOnly"] = [NSNumber numberWithBool:[self.privacySwitch isOn]];
     
-    [self.game save];
+    [self.game saveInBackground];
     inviteController.game = self.game;
     
     // NSLog(@"Object id %@", [self.game objectId]);

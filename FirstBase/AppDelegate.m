@@ -21,9 +21,7 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
                                                     UIRemoteNotificationTypeBadge |
                                                     UIRemoteNotificationTypeSound];
-//    [self performSelector:@selector(loadTestData) withObject:nil afterDelay:5];
-
-
+    [PFImageView class];
     return YES;
 }
 

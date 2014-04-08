@@ -139,15 +139,17 @@
         PFUser *u = [self.friends objectAtIndex:indexPath.row];
         [relation removeObject:u];
         [[u relationForKey:@"friends"] removeObject:self.user];
+        [u saveInBackground];
     }
     else {
         PFUser *u = [self.others objectAtIndex:indexPath.row];
         [relation addObject:u];
         [[u relationForKey:@"friends"] addObject:self.user];
+        [u saveInBackground];
     }
-    [[PFUser currentUser] save];
-
-    [self reloadFriends];
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self reloadFriends];
+    }];
 }
 
 /*
