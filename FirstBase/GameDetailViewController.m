@@ -43,8 +43,12 @@
     PFRelation *relation = [self.game relationForKey:@"players"];
     [[relation query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         self.participants = [NSMutableArray arrayWithArray:objects];
-        if ([self.participants containsObject:[PFUser currentUser]]) {
-            [self.joinButton setTitle:@"UnJoin!" forState:UIControlStateNormal];
+        NSMutableArray *playerIds = [NSMutableArray arrayWithCapacity:[self.participants count]];
+        for (PFUser *u in self.participants) {
+            [playerIds addObject:[u objectId]];
+        }
+        if ([playerIds containsObject:[[PFUser currentUser] objectId]]) {
+            [self.joinButton setTitle:@"Unjoin!" forState:UIControlStateNormal];
         }
         else {
             [self.joinButton setTitle:@"Join!" forState:UIControlStateNormal];
@@ -76,10 +80,14 @@
     
 - (void)joinClicked:(UIButton*)sender
 {
-    if ([self.participants containsObject:[PFUser currentUser]]) {
-        NSInteger row = [self.participants indexOfObject:[PFUser currentUser]];
+    NSMutableArray *playerIds = [NSMutableArray arrayWithCapacity:[self.participants count]];
+    for (PFUser *u in self.participants) {
+        [playerIds addObject:[u objectId]];
+    }
+    if ([playerIds containsObject:[[PFUser currentUser] objectId]]) {
+        NSInteger row = [playerIds indexOfObject:[[PFUser currentUser] objectId]];
         [[self.game relationForKey:@"players"] removeObject:[PFUser currentUser]];
-        [self.participants removeObject:[PFUser currentUser]];
+        [self.participants removeObjectAtIndex:row];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:1]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [sender setTitle:@"Join!" forState:UIControlStateNormal];
     }
@@ -89,7 +97,7 @@
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:[self.participants count] - 1 inSection:1]] withRowAnimation:UITableViewRowAnimationAutomatic];
         [sender setTitle:@"Unjoin!" forState:UIControlStateNormal];
     }
-//    [self.game setObject:[NSArray arrayWithArray:self.participants] forKey:@"players"];
+
     [self.game saveInBackground];
 }
 

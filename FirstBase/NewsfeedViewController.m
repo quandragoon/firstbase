@@ -49,9 +49,8 @@
     [privateQuery whereKey:@"friends" equalTo:[PFUser currentUser]];
     
     PFQuery *myEventsQuery = [PFQuery queryWithClassName:kGameObject];
-    [myEventsQuery whereKey:@"creater" equalTo:[PFUser currentUser]];
+    [myEventsQuery whereKey:@"creator" equalTo:[PFUser currentUser]];
 
-//    PFQuery *query = publicQuery;
     PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:publicQuery, privateQuery, myEventsQuery, nil]];
     [query orderByAscending:@"time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
