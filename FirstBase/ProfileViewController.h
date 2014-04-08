@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *volleyballSkill;
 @property (weak, nonatomic) IBOutlet UILabel *frisbeeSkill;
 @property (weak, nonatomic) IBOutlet UILabel *clickToEditLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sportsmenshipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *likabilityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *experienceLabel;
 
 - (IBAction)logoutClicked:(id)sender;
 - (void)avatarClickToEdit;

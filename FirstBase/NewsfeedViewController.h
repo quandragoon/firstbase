@@ -13,5 +13,6 @@
 @property (nonatomic) NSMutableArray *feedItems;
 
 - (IBAction)createClicked:(id)sender;
+- (IBAction)editClicked:(id)sender;
 
 @end

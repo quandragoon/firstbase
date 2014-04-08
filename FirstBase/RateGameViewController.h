@@ -12,6 +12,12 @@
 @interface RateGameViewController : UITableViewController
 
 @property (nonatomic) PFObject *game;
+@property (nonatomic) NSMutableDictionary *ratings;
 @property (nonatomic) NSArray *players;
+
+
+- (IBAction)playerNameClicked:(id)sender;
+- (IBAction)submitClicked:(id)sender;
+- (IBAction)sliderChanged:(id)sender;
 
 @end

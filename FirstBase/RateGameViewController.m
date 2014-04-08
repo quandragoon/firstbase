@@ -7,6 +7,9 @@
 //
 
 #import "RateGameViewController.h"
+#import "Resources.h"
+#import "ObjectNameConstants.h"
+#import "ProfileViewController.h"
 
 @interface RateGameViewController ()
 
@@ -23,14 +26,21 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-    
+    [self.tableView setAllowsSelection:NO];
+    self.ratings = [NSMutableDictionary dictionary];
     PFQuery *query = [[self.game relationForKey:@"players"] query];
     [query orderByAscending:@"name"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         self.players = objects;
+        for (PFUser *player in objects) {
+            NSMutableDictionary *rating = [NSMutableDictionary dictionaryWithObjects:@[[NSNumber numberWithInt:4],
+                                                                                       [NSNumber numberWithInt:4],
+                                                                                       [NSNumber numberWithInt:4]] forKeys:
+                                           @[@"sportsmenship", @"likability", @"experience"]];
+            [self.ratings setObject:rating forKey:[player objectId]];
+        }
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
     }];
 }
@@ -41,7 +51,83 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+- (void)submitClicked:(id)sender
+{
+    for (PFUser *player in self.players) {
+        NSDictionary *rating = [self.ratings objectForKey:[player objectId]];
+        
+        PFObject *obj = [PFObject objectWithClassName:kPlayerRatingObject];
+        for (NSString *key in @[@"sportsmenship", @"likability", @"experience"]) {
+            [obj setObject:[rating objectForKey:key] forKey:key];
+        }
+        
+        [obj setObject:player forKey:@"player"];
+        [obj setObject:self.game forKey:@"game"];
+        [obj setObject:[PFUser currentUser] forKey:@"rater"];
+        [obj saveInBackground];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)playerNameClicked:(id)sender
+{
+    UIView *superView = [sender superview];
+    UIView *foundSuperView = nil;
+    
+    while (nil != superView && nil == foundSuperView) {
+        if ([superView isKindOfClass:[UITableViewCell class]]) {
+            foundSuperView = superView;
+        } else {
+            superView = superView.superview;
+        }
+    }
+    
+    UITableViewCell* cell = (UITableViewCell*)superView;
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    
+    PFUser *player = [self.players objectAtIndex:indexPath.row];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    ProfileViewController *viewController = [sb instantiateViewControllerWithIdentifier:@"profile-controller"];
+    [viewController setUser:player];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)sliderChanged:(UISlider*)sender
+{
+    UIView *superView = [sender superview];
+    UIView *foundSuperView = nil;
+    
+    while (nil != superView && nil == foundSuperView) {
+        if ([superView isKindOfClass:[UITableViewCell class]]) {
+            foundSuperView = superView;
+        } else {
+            superView = superView.superview;
+        }
+    }
+    
+    UITableViewCell* cell = (UITableViewCell*)superView;
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    
+    PFUser *player = [self.players objectAtIndex:indexPath.row];
+    
+    NSString *key = nil;
+    switch ([sender tag]) {
+        case 3:
+            key = @"sportsmenship";
+            break;
+        case 4:
+            key = @"likability";
+            break;
+        case 5:
+            key = @"experience";
+            break;
+        default:
+            break;
+    }
+    
+    [[self.ratings objectForKey:[player objectId]] setObject:[NSNumber numberWithFloat:[sender value]] forKey:key];
+    
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -87,73 +173,20 @@
         }
     }
     else {
+        PFUser *player = [self.players objectAtIndex:indexPath.row];
         cell = [tableView dequeueReusableCellWithIdentifier:@"person-rate-cell" forIndexPath:indexPath];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"person-rate-cell"];
         }
-        PFUser *player = [self.players objectAtIndex:indexPath.row];
         PFImageView *avatarView = (PFImageView*)[cell viewWithTag:1];
         [avatarView setFile:[player objectForKey:@"avatar"]];
         [avatarView loadInBackground];
         
         UIButton *nameButton = (UIButton*)[cell viewWithTag:2];
         [nameButton setTitle:[player objectForKey:@"name"] forState:UIControlStateNormal];
-        
-//        UILabel *
     }
-    
-    // Configure the cell...
-    
+
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

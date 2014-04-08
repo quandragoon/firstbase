@@ -10,6 +10,7 @@
 #import "ProfileViewController.h"
 #import "EditProfileViewController.h"
 #import "AppDelegate.h"
+#import "ObjectNameConstants.h"
 #import "FriendsViewController.h"
 
 @interface ProfileViewController ()
@@ -70,13 +71,36 @@
     self.infoLabel.text = [self.infoLabel.text stringByAppendingString:@"\nGender: "];
     self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"gender"] ?: @""];
     
-    
     // print skill level
     [self.basketballSkill setText:[[self class] calculateSkillLevel:[self.user[@"basketballLevel"] floatValue]]];
     [self.soccerSkill setText:[[self class] calculateSkillLevel:[self.user[@"soccerLevel"] floatValue]]];
     [self.tennisSkill setText:[[self class] calculateSkillLevel:[self.user[@"tennisLevel"] floatValue]]];
     [self.frisbeeSkill setText:[[self class] calculateSkillLevel:[self.user[@"frisbeeLevel"] floatValue]]];
     [self.volleyballSkill setText:[[self class] calculateSkillLevel:[self.user[@"volleyballLevel"] floatValue]]];
+    
+    PFQuery *ratingsQuery = [PFQuery queryWithClassName:kPlayerRatingObject];
+    [ratingsQuery whereKey:@"player" equalTo:self.user];
+    [ratingsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] == 0) {
+            [self.sportsmenshipLabel setText:@"Not enough data"];
+            [self.likabilityLabel setText:@"Not enough data"];
+            [self.experienceLabel setText:@"Not enough data"];
+        }
+        else {
+            float sportsmenship = 0.0, experience = 0.0, likability = 0.0;
+            for (PFObject *rating in objects) {
+                sportsmenship += [[rating objectForKey:@"sportsmenship"] floatValue];
+                likability += [[rating objectForKey:@"likability"] floatValue];
+                experience += [[rating objectForKey:@"experience"] floatValue];
+            }
+            sportsmenship = sportsmenship / [objects count];
+            likability = likability / [objects count];
+            experience = experience / [objects count];
+            [self.sportsmenshipLabel setText:[NSString stringWithFormat:@"%.2f", sportsmenship]];
+            [self.experienceLabel setText:[NSString stringWithFormat:@"%.2f", experience]];
+            [self.likabilityLabel setText:[NSString stringWithFormat:@"%.2f", likability]];
+        }
+    }];
 }
 
 
@@ -128,72 +152,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
