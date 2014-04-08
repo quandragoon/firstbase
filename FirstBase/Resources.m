@@ -39,6 +39,7 @@
 
 + (UIImage *)iconForSportType:(NSString *)type
 {
+    
     if ([type isEqualToString:kGameTypeBasketball]) {
         return [self iconForBasketball];
     }
@@ -46,7 +47,6 @@
         return [self iconForFrisbee];
     }
     if ([type isEqualToString:kGameTypeVolleyball]) {
-        NSLog(@"HI");
         return [self iconForVolleyball];
     }
     if ([type isEqualToString:kGameTypeSoccer]) {

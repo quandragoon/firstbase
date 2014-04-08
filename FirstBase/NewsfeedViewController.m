@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "NSDate+Utilities.h"
 #import "NewsfeedViewController.h"
+#import "GameDetailViewController.h"
 #import "ObjectNameConstants.h"
 #import "Resources.h"
 
@@ -90,7 +91,7 @@
         UITableViewCell *c = [self.tableView cellForRowAtIndexPath:indexPath];
         if (c) {
             NSMutableArray *playerNames = [NSMutableArray arrayWithCapacity:8];
-            [playerNames addObject:[game objectForKey:@"Host"]];
+            [playerNames addObject:[game objectForKey:@"host"]];
             for (PFUser *player in objects) {
                 [playerNames addObject:[player objectForKey:@"name"]];
             }
@@ -102,10 +103,10 @@
     [dateFormatter setDateFormat:@"HH:mm dd MMMM yyyy"]; // use one d for 7 October instead of 07 October
 
     [(UILabel*)[cell viewWithTag:1] setText:[dateFormatter stringFromDate:[game objectForKey:@"time"]]];
-    UIImage *i = [Resources iconForSportType:[game objectForKey:@"Sport"]];
+    UIImage *i = [Resources iconForSportType:[game objectForKey:@"sport"]];
     [(UIImageView*)[cell viewWithTag:2] setImage:i];
     [(UILabel*)[cell viewWithTag:3] setText:@"Loading..."];
-    [(UILabel*)[cell viewWithTag:4] setText:[game objectForKey:@"Location"]];
+    [(UILabel*)[cell viewWithTag:4] setText:[game objectForKey:@"location"]];
 
     return cell;
 }
@@ -117,6 +118,19 @@
     [self presentViewController:mainController animated:YES completion:nil];
 }
 
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *game = [self.feedItems objectAtIndex:indexPath.row];
+  
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    GameDetailViewController *gameDetailViewController = [sb instantiateViewControllerWithIdentifier:@"game-detail-controller"];
+
+    gameDetailViewController.game = game;
+    [self.navigationController pushViewController:gameDetailViewController animated:YES];
+}
 
 
 /*

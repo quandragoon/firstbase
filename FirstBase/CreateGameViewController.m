@@ -37,10 +37,10 @@
     InviteFriendsViewController *inviteController = [sb instantiateViewControllerWithIdentifier:@"invite-friends-controller"];
     
     // save information to self.game
-    self.game[@"Sport"] = [self.sportOptions objectAtIndex:[self.sportPicker selectedRowInComponent:0]];
+    self.game[@"sport"] = [self.sportOptions objectAtIndex:[self.sportPicker selectedRowInComponent:0]];
     self.game[@"Location"] = [self.locationOptions objectAtIndex:[self.locationPicker selectedRowInComponent:0]];
     self.game[@"creator"] = [PFUser currentUser];
-    self.game[@"Host"] = [[PFUser currentUser] objectForKey:@"name"];
+    self.game[@"host"] = [[PFUser currentUser] objectForKey:@"name"];
     NSDate *selected = [self.timePicker date];
     // NSLog(@"%f",[selected timeIntervalSince1970]);
     self.game[@"time"] = selected;

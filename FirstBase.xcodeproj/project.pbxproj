@@ -15,7 +15,6 @@
 		5FE2495518B489D6007D740A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2495418B489D6007D740A /* main.m */; };
 		5FE2495918B489D6007D740A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2495818B489D6007D740A /* AppDelegate.m */; };
 		5FE2495C18B489D6007D740A /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2495A18B489D6007D740A /* Main_iPhone.storyboard */; };
-		5FE2495F18B489D6007D740A /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2495D18B489D6007D740A /* Main_iPad.storyboard */; };
 		5FE2496218B489D6007D740A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2496118B489D6007D740A /* LoginViewController.m */; };
 		5FE2496418B489D6007D740A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2496318B489D6007D740A /* Images.xcassets */; };
 		5FE2496B18B489D6007D740A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE2496A18B489D6007D740A /* XCTest.framework */; };
@@ -30,6 +29,7 @@
 		5FF81B8518F3A009004D1613 /* soccer_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B8418F3A009004D1613 /* soccer_icon.png */; };
 		5FF81B8718F3A00D004D1613 /* tennis_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B8618F3A00D004D1613 /* tennis_icon.png */; };
 		5FF81B8918F3A012004D1613 /* basketball_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B8818F3A012004D1613 /* basketball_icon.png */; };
+		5FF81B8C18F3A418004D1613 /* GameDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF81B8B18F3A418004D1613 /* GameDetailViewController.m */; };
 		7E4BC70D18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70C18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m */; };
 		7E4BC71018E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70F18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		7E4BC71418E3B07700EC2EE1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC71318E3B07700EC2EE1 /* AudioToolbox.framework */; };
@@ -76,7 +76,6 @@
 		5FE2495718B489D6007D740A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FE2495818B489D6007D740A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5FE2495B18B489D6007D740A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		5FE2495E18B489D6007D740A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		5FE2496018B489D6007D740A /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5FE2496118B489D6007D740A /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5FE2496318B489D6007D740A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -92,6 +91,8 @@
 		5FF81B8418F3A009004D1613 /* soccer_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccer_icon.png; sourceTree = "<group>"; };
 		5FF81B8618F3A00D004D1613 /* tennis_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tennis_icon.png; sourceTree = "<group>"; };
 		5FF81B8818F3A012004D1613 /* basketball_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball_icon.png; sourceTree = "<group>"; };
+		5FF81B8A18F3A418004D1613 /* GameDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameDetailViewController.h; sourceTree = "<group>"; };
+		5FF81B8B18F3A418004D1613 /* GameDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameDetailViewController.m; sourceTree = "<group>"; };
 		7E4BC70B18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		7E4BC70C18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		7E4BC70E18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
@@ -206,7 +207,6 @@
 				5FE2495718B489D6007D740A /* AppDelegate.h */,
 				5FE2495818B489D6007D740A /* AppDelegate.m */,
 				5FE2495A18B489D6007D740A /* Main_iPhone.storyboard */,
-				5FE2495D18B489D6007D740A /* Main_iPad.storyboard */,
 				5FE2496018B489D6007D740A /* LoginViewController.h */,
 				5FE2496118B489D6007D740A /* LoginViewController.m */,
 				5FE2496318B489D6007D740A /* Images.xcassets */,
@@ -230,6 +230,8 @@
 				7E68E4A418F0A9A4003FBFC0 /* CreateGameViewController.m */,
 				7E68E4A618F0AE4F003FBFC0 /* InviteFriendsViewController.h */,
 				7E68E4A718F0AE4F003FBFC0 /* InviteFriendsViewController.m */,
+				5FF81B8A18F3A418004D1613 /* GameDetailViewController.h */,
+				5FF81B8B18F3A418004D1613 /* GameDetailViewController.m */,
 			);
 			path = FirstBase;
 			sourceTree = "<group>";
@@ -359,7 +361,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FF81B7D18F39BCB004D1613 /* volleyball_icon.png in Resources */,
-				5FE2495F18B489D6007D740A /* Main_iPad.storyboard in Resources */,
 				5FE2498818B4A629007D740A /* logo.png in Resources */,
 				5FF81B8918F3A012004D1613 /* basketball_icon.png in Resources */,
 				5FF81B8718F3A00D004D1613 /* tennis_icon.png in Resources */,
@@ -397,6 +398,7 @@
 				7E68E48418EE77D1003FBFC0 /* NewsfeedViewController.m in Sources */,
 				7E68E49318F0A088003FBFC0 /* Resources.m in Sources */,
 				5FCFCF1318F34ED0001AD210 /* EditProfileViewController.m in Sources */,
+				5FF81B8C18F3A418004D1613 /* GameDetailViewController.m in Sources */,
 				5FE2495518B489D6007D740A /* main.m in Sources */,
 				7E68E4A818F0AE4F003FBFC0 /* InviteFriendsViewController.m in Sources */,
 				7E4BC71018E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -437,14 +439,6 @@
 				5FE2495B18B489D6007D740A /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		5FE2495D18B489D6007D740A /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5FE2495E18B489D6007D740A /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		5FE2497318B489D6007D740A /* InfoPlist.strings */ = {
@@ -548,6 +542,7 @@
 				INFOPLIST_FILE = "FirstBase/FirstBase-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -568,6 +563,7 @@
 				INFOPLIST_FILE = "FirstBase/FirstBase-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
