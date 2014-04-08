@@ -49,11 +49,23 @@
     self.name.text = self.user[@"name"];
     self.gender.text = self.user[@"Gender"];
     self.age.text = self.user[@"Age"];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 
     // Do any additional setup after loading the view.
 }
 
 
+
+-(void)dismissKeyboard {
+    [self.name resignFirstResponder];
+    [self.gender resignFirstResponder];
+    [self.age resignFirstResponder];
+}
 
 
 

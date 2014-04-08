@@ -39,6 +39,8 @@
     user[@"tennisLevel"] = def;
     user[@"frisbeeLevel"] = def;
     user[@"volleyballLevel"] = def;
+    user[@"Gender"] = @"";
+    user[@"Age"] = @"";
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
