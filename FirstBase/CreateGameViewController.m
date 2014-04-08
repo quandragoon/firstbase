@@ -86,8 +86,8 @@
 
 - (void)viewDidLoad
 {
-    self.locationOptions = [NSArray arrayWithObjects:@"Z Center", @"Bubble", @"Du Pont", nil];
-    self.sportOptions = [NSArray arrayWithObjects:kGameTypeFrisbee, kGameTypeBasketball, kGameTypeVolleyball, nil];
+    self.locationOptions = [NSArray arrayWithObjects:@"Z Center", @"Bubble", @"Du Pont", @"MAC Court", @"Rockwell", @"Briggs Field", @"Johnson",  nil];
+    self.sportOptions = [NSArray arrayWithObjects:kGameTypeFrisbee, kGameTypeBasketball, kGameTypeVolleyball, kGameTypeSoccer, kGameTypeTennis, nil];
     self.game = [PFObject objectWithClassName:kGameObject];
 }
 
