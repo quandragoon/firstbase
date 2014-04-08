@@ -162,10 +162,10 @@
     
     id vc = nil;
     if ([(NSDate*)[game objectForKey:@"time"] compare:[NSDate date]] == NSOrderedAscending) {
-        vc = [sb instantiateViewControllerWithIdentifier:@"game-detail-controller"];
+        vc = [sb instantiateViewControllerWithIdentifier:@"rate-view-controller"];
     }
     else {
-        vc = [sb instantiateViewControllerWithIdentifier:@"rate-view-controller"];
+        vc = [sb instantiateViewControllerWithIdentifier:@"game-detail-controller"];
     }
     [vc setGame:game];
     [self.navigationController pushViewController:vc animated:YES];
