@@ -51,7 +51,6 @@
     }
     [self.game saveInBackground];
     [self dismissViewControllerAnimated:YES completion:nil];
-    // [self.navigationController pushViewController:inviteController animated:YES];
     
 }
 

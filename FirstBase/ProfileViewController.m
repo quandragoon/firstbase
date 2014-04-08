@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "ProfileViewController.h"
+#import "EditProfileViewController.h"
 #import "AppDelegate.h"
 
 @interface ProfileViewController ()
@@ -25,6 +26,15 @@
     return self;
 }
 
+- (NSString*)calculateSkillLevel:(float)grade{
+    if (grade < 1.0)
+        return @"Beginner";
+    else if (grade < 2.0)
+        return @"Intermediate";
+    else
+        return @"Advanced";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,9 +45,23 @@
         UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                     action:@selector(avatarClickToEdit)];
         [self.avatarView addGestureRecognizer:singleTap];
-//        [self.avatarView setMultipleTouchEnabled:YES];
         [self.avatarView setUserInteractionEnabled:YES];
+        
+        
+        [self.nameLabel setText:self.user[@"name"]];
+        [self.infoLabel setText:@"Age: " ];
+        self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Age"]];
+        self.infoLabel.text = [self.infoLabel.text stringByAppendingString:@"\nGender: "];
+        self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Gender"]];
+        
+        // print skill level
+        [self.basketballSkill setText:[self calculateSkillLevel:[self.user[@"basketballLevel"] floatValue]]];
+        [self.soccerSkill setText:[self calculateSkillLevel:[self.user[@"soccerLevel"] floatValue]]];
+        [self.tennisSkill setText:[self calculateSkillLevel:[self.user[@"tennisLevel"] floatValue]]];
+        [self.frisbeeSkill setText:[self calculateSkillLevel:[self.user[@"frisbeeLevel"] floatValue]]];
+        [self.volleyballSkill setText:[self calculateSkillLevel:[self.user[@"volleyballLevel"] floatValue]]];
     }
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -46,16 +70,55 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
+- (void)viewWillAppear{
+
+    self.user = [PFUser currentUser];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(avatarClickToEdit)];
+    [self.avatarView addGestureRecognizer:singleTap];
+    [self.avatarView setUserInteractionEnabled:YES];
+        
+        
+    [self.nameLabel setText:self.user[@"name"]];
+    [self.infoLabel setText:@"Age: " ];
+    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Age"]];
+    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:@"\nGender: "];
+    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Gender"]];
+    
+    // print skill level
+    [self.basketballSkill setText:[self calculateSkillLevel:[self.user[@"basketballLevel"] floatValue]]];
+    [self.soccerSkill setText:[self calculateSkillLevel:[self.user[@"soccerLevel"] floatValue]]];
+    [self.tennisSkill setText:[self calculateSkillLevel:[self.user[@"tennisLevel"] floatValue]]];
+    [self.frisbeeSkill setText:[self calculateSkillLevel:[self.user[@"frisbeeLevel"] floatValue]]];
+    [self.volleyballSkill setText:[self calculateSkillLevel:[self.user[@"volleyballLevel"] floatValue]]];
+}
+
+
+
 - (void)logoutClicked:(id)sender
 {
     [PFUser logOut];
     [(AppDelegate*)[[UIApplication sharedApplication] delegate] popMainController];
 }
 
+
+
+-(void)editClicked:(id)sender{
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+    EditProfileViewController *editProfileController = [sb instantiateViewControllerWithIdentifier:@"edit-profile-controller"];
+
+    [self.navigationController pushViewController:editProfileController animated:YES];
+}
+
+
+
 - (void)avatarClickToEdit
 {
     
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

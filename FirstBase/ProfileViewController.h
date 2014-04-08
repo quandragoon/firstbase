@@ -13,9 +13,18 @@
 
 @property (nonatomic) PFUser *user;
 @property (nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (nonatomic) IBOutlet UIImageView *avatarView;
+@property (weak, nonatomic) IBOutlet UILabel *basketballSkill;
+@property (weak, nonatomic) IBOutlet UILabel *soccerSkill;
+@property (weak, nonatomic) IBOutlet UILabel *tennisSkill;
+@property (weak, nonatomic) IBOutlet UILabel *volleyballSkill;
+@property (weak, nonatomic) IBOutlet UILabel *frisbeeSkill;
 
 - (IBAction)logoutClicked:(id)sender;
 - (void)avatarClickToEdit;
 
+- (IBAction)editClicked:(id)sender;
+- (NSString*)calculateSkillLevel:(float)grade;
+    
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FCFCF1318F34ED0001AD210 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFCF1218F34ED0001AD210 /* EditProfileViewController.m */; };
 		5FE2494918B489D6007D740A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE2494818B489D6007D740A /* Foundation.framework */; };
 		5FE2494B18B489D6007D740A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE2494A18B489D6007D740A /* CoreGraphics.framework */; };
 		5FE2494D18B489D6007D740A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE2494C18B489D6007D740A /* UIKit.framework */; };
@@ -23,6 +24,8 @@
 		5FE2497518B489D6007D740A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2497318B489D6007D740A /* InfoPlist.strings */; };
 		5FE2497718B489D6007D740A /* FirstBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE2497618B489D6007D740A /* FirstBaseTests.m */; };
 		5FE2498818B4A629007D740A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE2498718B4A629007D740A /* logo.png */; };
+		5FF81B7718F387D5004D1613 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B7618F387D5004D1613 /* profile.png */; };
+		5FF81B7918F387DB004D1613 /* newsfeed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B7818F387DB004D1613 /* newsfeed.png */; };
 		7E4BC70D18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70C18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m */; };
 		7E4BC71018E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70F18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
 		7E4BC71418E3B07700EC2EE1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4BC71318E3B07700EC2EE1 /* AudioToolbox.framework */; };
@@ -57,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FCFCF1118F34ED0001AD210 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		5FCFCF1218F34ED0001AD210 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		5FE2494518B489D6007D740A /* FirstBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE2494818B489D6007D740A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5FE2494A18B489D6007D740A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,6 +83,8 @@
 		5FE2497418B489D6007D740A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5FE2497618B489D6007D740A /* FirstBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstBaseTests.m; sourceTree = "<group>"; };
 		5FE2498718B4A629007D740A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		5FF81B7618F387D5004D1613 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		5FF81B7818F387DB004D1613 /* newsfeed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsfeed.png; sourceTree = "<group>"; };
 		7E4BC70B18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		7E4BC70C18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		7E4BC70E18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
@@ -188,6 +195,8 @@
 		5FE2494E18B489D6007D740A /* FirstBase */ = {
 			isa = PBXGroup;
 			children = (
+				5FCFCF1118F34ED0001AD210 /* EditProfileViewController.h */,
+				5FCFCF1218F34ED0001AD210 /* EditProfileViewController.m */,
 				7E68E49E18F0A3D9003FBFC0 /* frisbee_icon.jpg */,
 				7E68E49A18F0A223003FBFC0 /* basketball_icon.png */,
 				5FE2495718B489D6007D740A /* AppDelegate.h */,
@@ -224,6 +233,8 @@
 		5FE2494F18B489D6007D740A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FF81B7818F387DB004D1613 /* newsfeed.png */,
+				5FF81B7618F387D5004D1613 /* profile.png */,
 				5FE2498018B49936007D740A /* Images */,
 				5FE2495018B489D6007D740A /* FirstBase-Info.plist */,
 				5FE2495118B489D6007D740A /* InfoPlist.strings */,
@@ -343,8 +354,10 @@
 				5FE2496418B489D6007D740A /* Images.xcassets in Resources */,
 				7E68E49C18F0A223003FBFC0 /* basketball_icon.png in Resources */,
 				7E68E49F18F0A3D9003FBFC0 /* frisbee_icon.jpg in Resources */,
+				5FF81B7918F387DB004D1613 /* newsfeed.png in Resources */,
 				5FE2495C18B489D6007D740A /* Main_iPhone.storyboard in Resources */,
 				5FE2495318B489D6007D740A /* InfoPlist.strings in Resources */,
+				5FF81B7718F387D5004D1613 /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +384,7 @@
 				5FE2495918B489D6007D740A /* AppDelegate.m in Sources */,
 				7E68E48418EE77D1003FBFC0 /* NewsfeedViewController.m in Sources */,
 				7E68E49318F0A088003FBFC0 /* Resources.m in Sources */,
+				5FCFCF1318F34ED0001AD210 /* EditProfileViewController.m in Sources */,
 				5FE2495518B489D6007D740A /* main.m in Sources */,
 				7E68E4A818F0AE4F003FBFC0 /* InviteFriendsViewController.m in Sources */,
 				7E4BC71018E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,

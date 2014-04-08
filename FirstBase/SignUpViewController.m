@@ -33,6 +33,12 @@
     user.username = [self.txtUsername text];
     [user relationForKey:@"friends"];
     [user setObject:[self.txtName text] forKey:@"name"];
+    NSNumber *def = [[NSNumber alloc]initWithFloat:0.0];
+    user[@"basketballLevel"] = def;
+    user[@"soccerLevel"] = def;
+    user[@"tennisLevel"] = def;
+    user[@"frisbeeLevel"] = def;
+    user[@"volleyballLevel"] = def;
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {

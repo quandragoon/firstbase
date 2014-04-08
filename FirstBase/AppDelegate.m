@@ -15,13 +15,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     [Parse setApplicationId:@"R7Eu7Sc6m1QMnx8lkJqZYHiHAu587ar1iW0fHJ01"
            clientKey:@"c0JyaYoZFWISGHHmIbOLrgHYRpZ2iAspfizDlT8F"];
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert |
                                                     UIRemoteNotificationTypeBadge |
                                                     UIRemoteNotificationTypeSound];
 //    [self performSelector:@selector(loadTestData) withObject:nil afterDelay:5];
-    
+
+
     return YES;
 }
 
@@ -87,5 +89,8 @@
     // game[@"time"] = [NSDate dateWithTimeIntervalSinceNow:3600 * 24];
     [game saveInBackground];
 }
+
+
+
 
 @end
