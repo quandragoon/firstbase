@@ -12,6 +12,7 @@
 #import "GameDetailViewController.h"
 #import "ObjectNameConstants.h"
 #import "Resources.h"
+#import "RateGameViewController.h"
 
 @interface NewsfeedViewController ()
 
@@ -144,6 +145,18 @@
     [self presentViewController:mainController animated:YES completion:nil];
 }
 
+- (void)editClicked:(id)sender
+{
+    if ([self.tableView isEditing]) {
+        [self.tableView setEditing:NO animated:YES];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editClicked:)];
+    }
+    else {
+        [self.tableView setEditing:YES animated:YES];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editClicked:)];
+    }
+}
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,35 +165,47 @@
   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    GameDetailViewController *gameDetailViewController = [sb instantiateViewControllerWithIdentifier:@"game-detail-controller"];
-
-    gameDetailViewController.game = game;
-    [self.navigationController pushViewController:gameDetailViewController animated:YES];
+    
+    id vc = nil;
+    if ([(NSDate*)[game objectForKey:@"time"] compare:[NSDate date]] == NSOrderedAscending) {
+        vc = [sb instantiateViewControllerWithIdentifier:@"rate-view-controller"];
+    }
+    else {
+        vc = [sb instantiateViewControllerWithIdentifier:@"game-detail-controller"];
+    }
+    [vc setGame:game];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
-/*
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+    PFObject *game = [self.feedItems objectAtIndex:indexPath.row];
 
-/*
+    if ([[[game objectForKey:@"creator"] objectId] isEqual:[[PFUser currentUser] objectId]]) {
+        return YES;
+    }
+    return NO;
+}
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PFObject *game = [self.feedItems objectAtIndex:indexPath.row];
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        [game deleteInBackground];
+        [self.feedItems removeObject:game];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
 /*
 // Override to support rearranging the table view.

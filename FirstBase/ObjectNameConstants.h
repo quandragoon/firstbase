@@ -8,4 +8,5 @@
 #define kGameTypeTennis @"Tennis"
 #define kGameObject @"Game"
 #define kGameInvitationObject @"GameInvitation"
+#define kPlayerRatingObject @"PlayerRating"
 
