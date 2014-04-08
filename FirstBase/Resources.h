@@ -12,6 +12,9 @@
 
 + (UIImage*)iconForBasketball;
 + (UIImage*)iconForFrisbee;
++ (UIImage*)iconForSoccer;
++ (UIImage*)iconForVolleyball;
++ (UIImage*)iconForTennis;
 + (UIImage*)iconForSportType:(NSString*)type;
 
 @end

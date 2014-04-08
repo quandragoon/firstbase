@@ -39,6 +39,7 @@
 
 + (UIImage *)iconForSportType:(NSString *)type
 {
+    
     if ([type isEqualToString:kGameTypeBasketball]) {
         return [self iconForBasketball];
     }
