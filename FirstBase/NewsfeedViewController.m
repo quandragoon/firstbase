@@ -127,7 +127,13 @@
     [(UILabel*)[cell viewWithTag:3] setText:@"Loading..."];
     [(UILabel*)[cell viewWithTag:4] setText:[game objectForKey:@"location"]];
     [(UILabel*)[cell viewWithTag:5] setHidden:YES];
-
+    
+    NSNumber *fo = [game objectForKey:@"friendsOnly"];
+    if ([fo boolValue]){
+        [(UIImageView*)[cell viewWithTag:6] setImage:[UIImage imageNamed:@"friends_only.png"]];
+    } else {
+        [(UIImageView*)[cell viewWithTag:6] setImage:[UIImage imageNamed:@"public.png"]];
+    }
     return cell;
 }
 

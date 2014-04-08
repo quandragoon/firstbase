@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FC9F74318F4833200A10F0E /* public.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9F74218F4833200A10F0E /* public.png */; };
+		5FC9F74518F4833C00A10F0E /* friends_only.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9F74418F4833C00A10F0E /* friends_only.png */; };
 		5FCFCF1318F34ED0001AD210 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFCF1218F34ED0001AD210 /* EditProfileViewController.m */; };
 		5FE2494918B489D6007D740A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE2494818B489D6007D740A /* Foundation.framework */; };
 		5FE2494B18B489D6007D740A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE2494A18B489D6007D740A /* CoreGraphics.framework */; };
@@ -77,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FC9F74218F4833200A10F0E /* public.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = public.png; sourceTree = "<group>"; };
+		5FC9F74418F4833C00A10F0E /* friends_only.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends_only.png; sourceTree = "<group>"; };
 		5FCFCF1118F34ED0001AD210 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		5FCFCF1218F34ED0001AD210 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		5FE2494518B489D6007D740A /* FirstBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +293,8 @@
 		5FE2494F18B489D6007D740A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FC9F74418F4833C00A10F0E /* friends_only.png */,
+				5FC9F74218F4833200A10F0E /* public.png */,
 				7E2B584A18F44D6D00BF1FF6 /* beaver.png */,
 				5FF81B8818F3A012004D1613 /* basketball_icon.png */,
 				5FF81B8618F3A00D004D1613 /* tennis_icon.png */,
@@ -452,6 +458,8 @@
 			files = (
 				5FF81B7D18F39BCB004D1613 /* volleyball_icon.png in Resources */,
 				7E2B585718F4530600BF1FF6 /* FontAwesome.ttf in Resources */,
+				5FC9F74318F4833200A10F0E /* public.png in Resources */,
+				5FC9F74518F4833C00A10F0E /* friends_only.png in Resources */,
 				5FE2498818B4A629007D740A /* logo.png in Resources */,
 				5FF81B8918F3A012004D1613 /* basketball_icon.png in Resources */,
 				5FF81B8718F3A00D004D1613 /* tennis_icon.png in Resources */,

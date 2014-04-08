@@ -178,7 +178,22 @@
     [avatarView loadInBackground];
     
     [(UILabel*)[cell viewWithTag:2] setText:[player objectForKey:@"name"]];
-    [(UILabel*)[cell viewWithTag:3] setText:[ProfileViewController calculateSkillLevel:[player[@"volleyballLevel"] floatValue]]];
+    
+    
+    NSString * sport = self.game[@"sport"];
+    if ([sport isEqualToString:kGameTypeBasketball]){
+        [(UILabel*)[cell viewWithTag:3] setText:[ProfileViewController calculateSkillLevel:[player[@"basketballLevel"] floatValue]]];
+    } else if ([sport isEqualToString:kGameTypeSoccer]) {
+        [(UILabel*)[cell viewWithTag:3] setText:[ProfileViewController calculateSkillLevel:[player[@"soccerLevel"] floatValue]]];
+    } else if ([sport isEqualToString:kGameTypeVolleyball]){
+        [(UILabel*)[cell viewWithTag:3] setText:[ProfileViewController calculateSkillLevel:[player[@"volleyballLevel"] floatValue]]];
+    } else if ([sport isEqualToString:kGameTypeTennis]){
+        [(UILabel*)[cell viewWithTag:3] setText:[ProfileViewController calculateSkillLevel:[player[@"tennisLevel"] floatValue]]];
+    } else if ([sport isEqualToString:kGameTypeFrisbee]){
+        [(UILabel*)[cell viewWithTag:3] setText:[ProfileViewController calculateSkillLevel:[player[@"frisbeeLevel"] floatValue]]];
+    }
+    
+    
 //    [(UILabel*)[cell viewWithTag:4] setText:[player objectForKey:@"name"]];
     
     return cell;
