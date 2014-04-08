@@ -46,7 +46,6 @@
         return [self iconForFrisbee];
     }
     if ([type isEqualToString:kGameTypeVolleyball]) {
-        NSLog(@"HI");
         return [self iconForVolleyball];
     }
     if ([type isEqualToString:kGameTypeSoccer]) {

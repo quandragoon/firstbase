@@ -138,10 +138,12 @@
     if (indexPath.section == 0) {
         PFUser *u = [self.friends objectAtIndex:indexPath.row];
         [relation removeObject:u];
+        [[u relationForKey:@"friends"] removeObject:self.user];
     }
     else {
         PFUser *u = [self.others objectAtIndex:indexPath.row];
         [relation addObject:u];
+        [[u relationForKey:@"friends"] addObject:self.user];
     }
     [[PFUser currentUser] save];
 

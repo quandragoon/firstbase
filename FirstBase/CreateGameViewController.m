@@ -32,21 +32,29 @@
 
 - (void)inviteClicked:(id)sender
 {
-    // self.game setObject:self.timePicker  forKey:<#(NSString *)#>
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     InviteFriendsViewController *inviteController = [sb instantiateViewControllerWithIdentifier:@"invite-friends-controller"];
     
-    // save information to self.game
-    self.game[@"Sport"] = [self.sportOptions objectAtIndex:[self.sportPicker selectedRowInComponent:0]];
-    self.game[@"Location"] = [self.locationOptions objectAtIndex:[self.locationPicker selectedRowInComponent:0]];
+    /* 
+     
+     PLEASE be consistent with naming of the fields. The majority of the fields in existing code is in camel case so only
+     use camel case in future.
+     
+     */
+    
+    self.game[@"sport"] = [self.sportOptions objectAtIndex:[self.sportPicker selectedRowInComponent:0]];
+    self.game[@"location"] = [self.locationOptions objectAtIndex:[self.locationPicker selectedRowInComponent:0]];
     self.game[@"creator"] = [PFUser currentUser];
-    self.game[@"Host"] = [[PFUser currentUser] objectForKey:@"name"];
+    self.game[@"host"] = [[PFUser currentUser] objectForKey:@"name"];
+    self.game[@"description"] = [self.descInput text];
     NSDate *selected = [self.timePicker date];
     // NSLog(@"%f",[selected timeIntervalSince1970]);
     self.game[@"time"] = selected;
+    self.game[@"friendsOnly"] = [NSNumber numberWithBool:[self.privacySwitch isOn]];
     
     [self.game save];
     inviteController.game = self.game;
+    
     // NSLog(@"Object id %@", [self.game objectId]);
     [self.navigationController pushViewController:inviteController animated:YES];
 }

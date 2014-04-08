@@ -47,7 +47,19 @@
 
 
 - (void) viewWillAppear:(BOOL)animated {
-    PFQuery *query = [PFQuery queryWithClassName:kGameObject];
+    PFQuery *publicQuery = [PFQuery queryWithClassName:kGameObject];
+    [publicQuery whereKey:@"friendsOnly" equalTo:[NSNumber numberWithBool:NO]];
+    
+    PFQuery *privateQuery = [PFQuery queryWithClassName:kGameObject];
+    [privateQuery whereKey:@"friendsOnly" equalTo:[NSNumber numberWithBool:YES]];
+    [privateQuery whereKey:@"friends" equalTo:[PFUser currentUser]];
+    
+    PFQuery *myEventsQuery = [PFQuery queryWithClassName:kGameObject];
+    [myEventsQuery whereKey:@"creater" equalTo:[PFUser currentUser]];
+
+//    PFQuery *query = publicQuery;
+    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:publicQuery, privateQuery, myEventsQuery, nil]];
+    [query orderByAscending:@"time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
         [self.tableView reloadData];
@@ -90,7 +102,7 @@
         UITableViewCell *c = [self.tableView cellForRowAtIndexPath:indexPath];
         if (c) {
             NSMutableArray *playerNames = [NSMutableArray arrayWithCapacity:8];
-            [playerNames addObject:[game objectForKey:@"Host"]];
+            [playerNames addObject:[game objectForKey:@"host"]];
             for (PFUser *player in objects) {
                 [playerNames addObject:[player objectForKey:@"name"]];
             }
@@ -98,14 +110,30 @@
         }
     }];
     
+    PFQuery *invitationQuery = [PFQuery queryWithClassName:kGameInvitationObject];
+    [invitationQuery whereKey:@"game" equalTo:game];
+    [invitationQuery whereKey:@"to" equalTo:[PFUser currentUser]];
+    [invitationQuery includeKey:@"from"];
+    [invitationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        UITableViewCell *c = [self.tableView cellForRowAtIndexPath:indexPath];
+        if ([objects count]) {
+            PFObject *invitation = [objects objectAtIndex:0];
+            [(UILabel*)[c viewWithTag:5] setHidden:NO];
+            [(UILabel*)[c viewWithTag:5] setText:[NSString stringWithFormat:@"You are invited by %@!", [[invitation objectForKey:@"from"] objectForKey:@"name"]]];
+        }
+        else
+            [(UILabel*)[c viewWithTag:5] setHidden:YES];
+    }];
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm dd MMMM yyyy"]; // use one d for 7 October instead of 07 October
 
     [(UILabel*)[cell viewWithTag:1] setText:[dateFormatter stringFromDate:[game objectForKey:@"time"]]];
-    UIImage *i = [Resources iconForSportType:[game objectForKey:@"Sport"]];
+    UIImage *i = [Resources iconForSportType:[game objectForKey:@"sport"]];
     [(UIImageView*)[cell viewWithTag:2] setImage:i];
     [(UILabel*)[cell viewWithTag:3] setText:@"Loading..."];
-    [(UILabel*)[cell viewWithTag:4] setText:[game objectForKey:@"Location"]];
+    [(UILabel*)[cell viewWithTag:4] setText:[game objectForKey:@"location"]];
+    [(UILabel*)[cell viewWithTag:5] setHidden:YES];
 
     return cell;
 }

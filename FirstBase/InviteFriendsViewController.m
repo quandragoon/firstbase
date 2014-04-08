@@ -7,6 +7,7 @@
 //
 
 #import "InviteFriendsViewController.h"
+#import "ObjectNameConstants.h"
 
 @interface InviteFriendsViewController ()
 
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
     
+    self.tableView.allowsMultipleSelection = YES;
     self.friends = [NSArray array];
     [[[[PFUser currentUser] relationForKey:@"friends"] query] findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         self.friends = objects;
@@ -45,13 +47,17 @@
 
 - (void)doneClicked:(id)sender
 {
-    PFRelation *invited = [self.game relationForKey:@"invited"];
-    for (PFUser *f in self.selectedFriends) {
-        [invited addObject:f];
-    }
     [self.game saveInBackground];
-    [self dismissViewControllerAnimated:YES completion:nil];
     
+    for (PFUser *f in self.selectedFriends) {
+        PFObject *invitation = [PFObject objectWithClassName:kGameInvitationObject];
+        [invitation setObject:[PFUser currentUser] forKey:@"from"];
+        [invitation setObject:f forKey:@"to"];
+        [invitation setObject:self.game forKey:@"game"];
+        [invitation saveInBackground];
+    }
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Table view data source
@@ -71,23 +77,50 @@
     static NSString *identifier = @"InviteFriendCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
+    PFUser *friend = [self.friends objectAtIndex:indexPath.row];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.textLabel.text = [[self.friends objectAtIndex:indexPath.row] objectForKey:@"name"];
     
-    cell.textLabel.text = [self.friends objectAtIndex:indexPath.row];
+    if ([self.selectedFriends containsObject:friend])
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    else
+        cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.selectedFriends addObject:[self.friends objectAtIndex:indexPath.row]];
+    PFUser *friend = [self.friends objectAtIndex:indexPath.row];
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([self.selectedFriends containsObject:friend]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.selectedFriends removeObject:friend];
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.selectedFriends addObject:friend];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.selectedFriends removeObject:[self.friends objectAtIndex:indexPath.row]];
+    PFUser *friend = [self.friends objectAtIndex:indexPath.row];
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if ([self.selectedFriends containsObject:friend]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.selectedFriends removeObject:friend];
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.selectedFriends addObject:friend];
+    }
 }
 
 @end

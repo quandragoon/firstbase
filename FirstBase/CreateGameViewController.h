@@ -11,10 +11,12 @@
 
 @interface CreateGameViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
+@property (nonatomic) IBOutlet UITextField *descInput;
 @property (nonatomic) IBOutlet UIPickerView *sportPicker;
 @property (nonatomic) IBOutlet UIDatePicker *timePicker;
 @property (nonatomic) IBOutlet UITextField *nameInput;
 @property (nonatomic) IBOutlet UIPickerView *locationPicker;
+@property (nonatomic) IBOutlet UISwitch *privacySwitch;
 @property (nonatomic) NSArray *locationOptions;
 @property (nonatomic) NSArray *sportOptions;
 @property (nonatomic) PFObject *game;
