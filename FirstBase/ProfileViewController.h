@@ -25,6 +25,7 @@
 - (void)avatarClickToEdit;
 
 - (IBAction)editClicked:(id)sender;
+- (IBAction)showFriendsClicked:(id)sender;
 - (NSString*)calculateSkillLevel:(float)grade;
     
 @end

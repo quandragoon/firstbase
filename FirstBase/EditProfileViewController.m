@@ -83,8 +83,8 @@
     self.user[@"name"] = self.name.text;
     self.user[@"Gender"] = self.gender.text;
     self.user[@"Age"] = self.age.text;
-    [self.user save];
+    [self.user saveInBackground];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

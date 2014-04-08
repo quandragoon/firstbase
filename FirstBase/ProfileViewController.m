@@ -10,6 +10,7 @@
 #import "ProfileViewController.h"
 #import "EditProfileViewController.h"
 #import "AppDelegate.h"
+#import "FriendsViewController.h"
 
 @interface ProfileViewController ()
 
@@ -46,45 +47,18 @@
                                                                                     action:@selector(avatarClickToEdit)];
         [self.avatarView addGestureRecognizer:singleTap];
         [self.avatarView setUserInteractionEnabled:YES];
-        
-        
-        [self.nameLabel setText:self.user[@"name"]];
-        [self.infoLabel setText:@"Age: " ];
-        self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Age"]];
-        self.infoLabel.text = [self.infoLabel.text stringByAppendingString:@"\nGender: "];
-        self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Gender"]];
-        
-        // print skill level
-        [self.basketballSkill setText:[self calculateSkillLevel:[self.user[@"basketballLevel"] floatValue]]];
-        [self.soccerSkill setText:[self calculateSkillLevel:[self.user[@"soccerLevel"] floatValue]]];
-        [self.tennisSkill setText:[self calculateSkillLevel:[self.user[@"tennisLevel"] floatValue]]];
-        [self.frisbeeSkill setText:[self calculateSkillLevel:[self.user[@"frisbeeLevel"] floatValue]]];
-        [self.volleyballSkill setText:[self calculateSkillLevel:[self.user[@"volleyballLevel"] floatValue]]];
+    }
+    else {
+        // hide Edit button
+        self.navigationItem.leftBarButtonItem = nil;
     }
 
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-
-- (void)viewWillAppear{
-
-    self.user = [PFUser currentUser];
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                    action:@selector(avatarClickToEdit)];
-    [self.avatarView addGestureRecognizer:singleTap];
-    [self.avatarView setUserInteractionEnabled:YES];
-        
-        
     [self.nameLabel setText:self.user[@"name"]];
     [self.infoLabel setText:@"Age: " ];
-    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Age"]];
+    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Age"] ?: @""];
     self.infoLabel.text = [self.infoLabel.text stringByAppendingString:@"\nGender: "];
-    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Gender"]];
+    self.infoLabel.text = [self.infoLabel.text stringByAppendingString:self.user[@"Gender"] ?: @""];
     
     // print skill level
     [self.basketballSkill setText:[self calculateSkillLevel:[self.user[@"basketballLevel"] floatValue]]];
@@ -92,6 +66,12 @@
     [self.tennisSkill setText:[self calculateSkillLevel:[self.user[@"tennisLevel"] floatValue]]];
     [self.frisbeeSkill setText:[self calculateSkillLevel:[self.user[@"frisbeeLevel"] floatValue]]];
     [self.volleyballSkill setText:[self calculateSkillLevel:[self.user[@"volleyballLevel"] floatValue]]];
+
+}
+
+
+- (void)viewWillAppear {
+    
 }
 
 
@@ -104,11 +84,16 @@
 
 
 
--(void)editClicked:(id)sender{
+- (void)editClicked:(id)sender{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     EditProfileViewController *editProfileController = [sb instantiateViewControllerWithIdentifier:@"edit-profile-controller"];
 
     [self.navigationController pushViewController:editProfileController animated:YES];
+}
+
+- (void)showFriendsClicked:(id)sender
+{
+    
 }
 
 
@@ -191,16 +176,18 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"show-friends"]) {
+        FriendsViewController* vc = [segue destinationViewController];
+        [vc setUser:self.user];
+        
+    }
 }
 
- */
 
 @end
