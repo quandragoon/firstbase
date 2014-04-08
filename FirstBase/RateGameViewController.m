@@ -27,11 +27,12 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    PFQuery *query = [[self.game relationForKey:@"players"] query];
+    [query orderByAscending:@"name"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        self.players = objects;
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,28 +45,67 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return [self.players count];
+        default:
+            break;
+    }
     return 0;
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 0:
+            return 136;
+            break;
+        case 1:
+            return 211;
+        default:
+            break;
+    }
+    return 0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = nil;
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"rate-intro-cell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"rate-intro-cell"];
+        }
+    }
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"person-rate-cell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"person-rate-cell"];
+        }
+        PFUser *player = [self.players objectAtIndex:indexPath.row];
+        PFImageView *avatarView = (PFImageView*)[cell viewWithTag:1];
+        [avatarView setFile:[player objectForKey:@"avatar"]];
+        [avatarView loadInBackground];
+        
+        UIButton *nameButton = (UIButton*)[cell viewWithTag:2];
+        [nameButton setTitle:[player objectForKey:@"name"] forState:UIControlStateNormal];
+        
+//        UILabel *
+    }
     
     // Configure the cell...
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

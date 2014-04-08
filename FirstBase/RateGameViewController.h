@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface RateGameViewController : UITableViewController
+
+@property (nonatomic) PFObject *game;
+@property (nonatomic) NSArray *players;
 
 @end

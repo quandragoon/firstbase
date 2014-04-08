@@ -12,6 +12,7 @@
 #import "GameDetailViewController.h"
 #import "ObjectNameConstants.h"
 #import "Resources.h"
+#import "RateGameViewController.h"
 
 @interface NewsfeedViewController ()
 
@@ -146,10 +147,11 @@
   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
-    GameDetailViewController *gameDetailViewController = [sb instantiateViewControllerWithIdentifier:@"game-detail-controller"];
+//    GameDetailViewController *vc = [sb instantiateViewControllerWithIdentifier:@"game-detail-controller"];
 
-    gameDetailViewController.game = game;
-    [self.navigationController pushViewController:gameDetailViewController animated:YES];
+    RateGameViewController *vc = [sb instantiateViewControllerWithIdentifier:@"rate-view-controller"];
+    vc.game = game;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
