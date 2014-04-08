@@ -194,7 +194,26 @@
     }
     
     
-//    [(UILabel*)[cell viewWithTag:4] setText:[player objectForKey:@"name"]];
+    PFQuery *ratingsQuery = [PFQuery queryWithClassName:kPlayerRatingObject];
+    [ratingsQuery whereKey:@"player" equalTo:player];
+    [ratingsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] == 0) {
+            [(UILabel*)[cell viewWithTag:4] setText:@"Not enough data"];
+        }
+        else {
+            float sportsmenship = 0.0, experience = 0.0, likability = 0.0;
+            for (PFObject *rating in objects) {
+                sportsmenship += [[rating objectForKey:@"sportsmenship"] floatValue];
+                likability += [[rating objectForKey:@"likability"] floatValue];
+                experience += [[rating objectForKey:@"experience"] floatValue];
+            }
+            sportsmenship = sportsmenship / [objects count];
+            likability = likability / [objects count];
+            experience = experience / [objects count];
+            [(UILabel*)[cell viewWithTag:4] setText:[NSString stringWithFormat:@"%.2f", (sportsmenship + experience + likability)/3.0]];
+        }
+    }];
+    
     
     return cell;
 }

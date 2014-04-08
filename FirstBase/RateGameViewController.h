@@ -14,6 +14,8 @@
 @property (nonatomic) PFObject *game;
 @property (nonatomic) NSMutableDictionary *ratings;
 @property (nonatomic) NSArray *players;
+@property (weak, nonatomic) IBOutlet UIButton *host;
+@property (weak, nonatomic) IBOutlet UITableViewCell *protCell;
 
 
 - (IBAction)playerNameClicked:(id)sender;
