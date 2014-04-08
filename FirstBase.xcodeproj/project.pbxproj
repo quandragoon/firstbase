@@ -30,6 +30,7 @@
 		5FF81B8518F3A009004D1613 /* soccer_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B8418F3A009004D1613 /* soccer_icon.png */; };
 		5FF81B8718F3A00D004D1613 /* tennis_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B8618F3A00D004D1613 /* tennis_icon.png */; };
 		5FF81B8918F3A012004D1613 /* basketball_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FF81B8818F3A012004D1613 /* basketball_icon.png */; };
+		7E2B581C18F3C65600BF1FF6 /* RateGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2B581B18F3C65600BF1FF6 /* RateGameViewController.m */; };
 		7E39C14218F3A3FA00E4FA70 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E39C14118F3A3FA00E4FA70 /* FriendsViewController.m */; };
 		7E4BC70D18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70C18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m */; };
 		7E4BC71018E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BC70F18E37ED000EC2EE1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
@@ -93,6 +94,8 @@
 		5FF81B8418F3A009004D1613 /* soccer_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soccer_icon.png; sourceTree = "<group>"; };
 		5FF81B8618F3A00D004D1613 /* tennis_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tennis_icon.png; sourceTree = "<group>"; };
 		5FF81B8818F3A012004D1613 /* basketball_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basketball_icon.png; sourceTree = "<group>"; };
+		7E2B581A18F3C65600BF1FF6 /* RateGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateGameViewController.h; sourceTree = "<group>"; };
+		7E2B581B18F3C65600BF1FF6 /* RateGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateGameViewController.m; sourceTree = "<group>"; };
 		7E39C14018F3A3FA00E4FA70 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
 		7E39C14118F3A3FA00E4FA70 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		7E4BC70B18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				7E68E4A718F0AE4F003FBFC0 /* InviteFriendsViewController.m */,
 				7E39C14018F3A3FA00E4FA70 /* FriendsViewController.h */,
 				7E39C14118F3A3FA00E4FA70 /* FriendsViewController.m */,
+				7E2B581A18F3C65600BF1FF6 /* RateGameViewController.h */,
+				7E2B581B18F3C65600BF1FF6 /* RateGameViewController.m */,
 			);
 			path = FirstBase;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 			files = (
 				5FE2496218B489D6007D740A /* LoginViewController.m in Sources */,
 				7E4BC70D18E37E8600EC2EE1 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				7E2B581C18F3C65600BF1FF6 /* RateGameViewController.m in Sources */,
 				7E39C14218F3A3FA00E4FA70 /* FriendsViewController.m in Sources */,
 				7E4BC72718E3B2C500EC2EE1 /* SignUpViewController.m in Sources */,
 				7E68E49018F09BBD003FBFC0 /* NSDate+Utilities.m in Sources */,
