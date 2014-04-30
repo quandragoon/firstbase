@@ -198,7 +198,7 @@
     [ratingsQuery whereKey:@"player" equalTo:player];
     [ratingsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ([objects count] == 0) {
-            [(UILabel*)[cell viewWithTag:4] setText:@"Not enough data"];
+            [(UILabel*)[cell viewWithTag:4] setText:@"No data"];
         }
         else {
             float sportsmenship = 0.0, experience = 0.0, likability = 0.0;

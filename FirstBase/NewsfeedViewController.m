@@ -56,13 +56,13 @@
     [query orderByAscending:@"time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         self.feedItems = [[NSMutableArray alloc] init];
-//        for (PFObject *game in objects) {
+        for (PFObject *game in objects) {
 //            if ([[game objectForKey:@"friendsOnly"] boolValue] == YES) {
 //                [[[[game objectForKey:@"creator"] relationForKey:@"friends"] query] whereKey:@"id" equalTo:[PFUser currentUser] objec]
 //            }
-//            [self.feedItems addObject:game];
-//        }
-        [self.feedItems addObject:game];
+            [self.feedItems addObject:game];
+        }
+        // [self.feedItems addObject:game];
         [self.tableView reloadData];
     }];
 }
@@ -138,10 +138,14 @@
     
     NSNumber *fo = [game objectForKey:@"friendsOnly"];
     if ([fo boolValue]){
-        [(UIImageView*)[cell viewWithTag:6] setImage:[UIImage imageNamed:@"friends_only.png"]];
+        // [(UIImageView*)[cell viewWithTag:6] setImage:[UIImage imageNamed:@"friends_only.png"]];
+        [(UILabel*)[cell viewWithTag:6] setText:@"PRIVATE"];
     } else {
-        [(UIImageView*)[cell viewWithTag:6] setImage:[UIImage imageNamed:@"public.png"]];
+        // [(UIImageView*)[cell viewWithTag:6] setImage:[UIImage imageNamed:@"public.png"]];
+        [(UILabel*)[cell viewWithTag:6] setText:@"PUBLIC"];
     }
+    
+    [(UILabel*)[cell viewWithTag:7] setText:[game objectForKey:@"description"]];
     return cell;
 }
 
