@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : UIViewController
+@interface SignUpViewController : GAITrackedViewController
 
 @property (nonatomic, weak) IBOutlet UITextField *txtUsername;
 @property (nonatomic, weak) IBOutlet UITextField *txtPassword;

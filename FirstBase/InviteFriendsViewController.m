@@ -55,6 +55,15 @@
         [invitation setObject:f forKey:@"to"];
         [invitation setObject:self.game forKey:@"game"];
         [invitation saveInBackground];
+        
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"user" equalTo:f];
+        
+        PFPush *push = [[PFPush alloc] init];
+        [push setQuery:pushQuery];
+        [push setMessage:[NSString stringWithFormat:@"%@ invited you to play %@!",
+                          [[PFUser currentUser] objectForKey:@"name"], [self.game objectForKey:@"sport"]]];
+        [push sendPushInBackground];
     }
 
     [self dismissViewControllerAnimated:YES completion:nil];

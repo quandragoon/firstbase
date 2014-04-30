@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface EditProfileViewController : UIViewController
+@interface EditProfileViewController : GAITrackedViewController
 @property (weak, nonatomic) IBOutlet UISlider *basketballLevel;
 @property (weak, nonatomic) IBOutlet UISlider *soccerLevel;
 @property (weak, nonatomic) IBOutlet UISlider *tennisLevel;

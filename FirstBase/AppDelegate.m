@@ -9,7 +9,7 @@
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "ObjectNameConstants.h"
-
+#import "GoogleAnalytics/Library/GAI.h"
 
 @implementation AppDelegate
 
@@ -22,6 +22,33 @@
                                                     UIRemoteNotificationTypeBadge |
                                                     UIRemoteNotificationTypeSound];
     [PFImageView class];
+    
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50518404-1"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//    
+//    if (application.applicationState != UIApplicationStateBackground) {
+//        // Track an app open here if we launch with a push, unless
+//        // "content_available" was used to trigger a background push (introduced
+//        // in iOS 7). In that case, we skip tracking here to avoid double
+//        // counting the app-open.
+//        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
+//        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
+//        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+//            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//        }
+//    }
+
     return YES;
 }
 
@@ -29,6 +56,8 @@
 {
     PFInstallation *installation = [PFInstallation currentInstallation];
     [installation setDeviceTokenFromData:deviceToken];
+    installation[@"user"] = [PFUser currentUser];
+    [installation addUniqueObject:@"AllUsers" forKey:@"channels"];
     [installation saveInBackground];
 }
 

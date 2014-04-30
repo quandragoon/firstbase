@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F4114BA1910777A00B81929 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F41145A1910777A00B81929 /* Changelog.txt */; };
+		5F4114D91910777A00B81929 /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5F41148C1910777A00B81929 /* Readme.txt */; };
+		5F4114DA1910777A00B81929 /* libAdIdAccess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41148D1910777A00B81929 /* libAdIdAccess.a */; };
+		5F4114DB1910777A00B81929 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F41148E1910777A00B81929 /* libGoogleAnalyticsServices.a */; };
+		5F4114E31910789D00B81929 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4114E21910789D00B81929 /* libsqlite3.dylib */; };
+		5F4114E5191078A900B81929 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4114E4191078A900B81929 /* AdSupport.framework */; };
+		5F4114E7191078B200B81929 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F4114E6191078B200B81929 /* CoreData.framework */; };
 		5FC9F74318F4833200A10F0E /* public.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9F74218F4833200A10F0E /* public.png */; };
 		5FC9F74518F4833C00A10F0E /* friends_only.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FC9F74418F4833C00A10F0E /* friends_only.png */; };
 		5FCFCF1318F34ED0001AD210 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCFCF1218F34ED0001AD210 /* EditProfileViewController.m */; };
@@ -79,6 +86,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F41145A1910777A00B81929 /* Changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog.txt; sourceTree = "<group>"; };
+		5F4114861910777A00B81929 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		5F4114871910777A00B81929 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		5F4114881910777A00B81929 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		5F4114891910777A00B81929 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		5F41148A1910777A00B81929 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		5F41148B1910777A00B81929 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		5F41148C1910777A00B81929 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		5F41148D1910777A00B81929 /* libAdIdAccess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdIdAccess.a; sourceTree = "<group>"; };
+		5F41148E1910777A00B81929 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		5F4114E21910789D00B81929 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		5F4114E4191078A900B81929 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		5F4114E6191078B200B81929 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5FC9F74218F4833200A10F0E /* public.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = public.png; sourceTree = "<group>"; };
 		5FC9F74418F4833C00A10F0E /* friends_only.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends_only.png; sourceTree = "<group>"; };
 		5FCFCF1118F34ED0001AD210 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
@@ -174,13 +194,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F4114E7191078B200B81929 /* CoreData.framework in Frameworks */,
+				5F4114E5191078A900B81929 /* AdSupport.framework in Frameworks */,
+				5F4114E31910789D00B81929 /* libsqlite3.dylib in Frameworks */,
 				7E4BC72418E3B0BA00EC2EE1 /* StoreKit.framework in Frameworks */,
+				5F4114DA1910777A00B81929 /* libAdIdAccess.a in Frameworks */,
 				7E4BC72218E3B0B500EC2EE1 /* SystemConfiguration.framework in Frameworks */,
 				7E4BC72018E3B0AF00EC2EE1 /* Security.framework in Frameworks */,
 				7E4BC71E18E3B0A700EC2EE1 /* QuartzCore.framework in Frameworks */,
 				7E4BC71C18E3B0A000EC2EE1 /* MobileCoreServices.framework in Frameworks */,
 				7E4BC71A18E3B09900EC2EE1 /* libz.dylib in Frameworks */,
 				7E68E48118EE7109003FBFC0 /* Parse.framework in Frameworks */,
+				5F4114DB1910777A00B81929 /* libGoogleAnalyticsServices.a in Frameworks */,
 				7E4BC71818E3B09100EC2EE1 /* CoreLocation.framework in Frameworks */,
 				5FE2494B18B489D6007D740A /* CoreGraphics.framework in Frameworks */,
 				7E4BC71618E3B08100EC2EE1 /* CFNetwork.framework in Frameworks */,
@@ -203,6 +228,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F4114591910777A00B81929 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				5F41145A1910777A00B81929 /* Changelog.txt */,
+				5F4114851910777A00B81929 /* Library */,
+				5F41148C1910777A00B81929 /* Readme.txt */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		5F4114851910777A00B81929 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5F4114861910777A00B81929 /* GAI.h */,
+				5F4114871910777A00B81929 /* GAIDictionaryBuilder.h */,
+				5F4114881910777A00B81929 /* GAIFields.h */,
+				5F4114891910777A00B81929 /* GAILogger.h */,
+				5F41148A1910777A00B81929 /* GAITrackedViewController.h */,
+				5F41148B1910777A00B81929 /* GAITracker.h */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		5FE2493C18B489D6007D740A = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +273,9 @@
 		5FE2494718B489D6007D740A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5F4114E6191078B200B81929 /* CoreData.framework */,
+				5F4114E4191078A900B81929 /* AdSupport.framework */,
+				5F4114E21910789D00B81929 /* libsqlite3.dylib */,
 				7E68E48018EE7109003FBFC0 /* Parse.framework */,
 				7E4BC72318E3B0B900EC2EE1 /* StoreKit.framework */,
 				7E4BC72118E3B0B500EC2EE1 /* SystemConfiguration.framework */,
@@ -246,6 +297,9 @@
 		5FE2494E18B489D6007D740A /* FirstBase */ = {
 			isa = PBXGroup;
 			children = (
+				5F4114591910777A00B81929 /* GoogleAnalytics */,
+				5F41148D1910777A00B81929 /* libAdIdAccess.a */,
+				5F41148E1910777A00B81929 /* libGoogleAnalyticsServices.a */,
 				7E2B584C18F4530600BF1FF6 /* BButton */,
 				7E2B583418F44B1E00BF1FF6 /* GKImageCropper.h */,
 				7E2B583518F44B1E00BF1FF6 /* GKImageCropper.m */,
@@ -421,7 +475,7 @@
 		5FE2493D18B489D6007D740A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Quan Nguyen";
 				TargetAttributes = {
 					5FE2494418B489D6007D740A = {
@@ -461,10 +515,12 @@
 				5FC9F74318F4833200A10F0E /* public.png in Resources */,
 				5FC9F74518F4833C00A10F0E /* friends_only.png in Resources */,
 				5FE2498818B4A629007D740A /* logo.png in Resources */,
+				5F4114BA1910777A00B81929 /* Changelog.txt in Resources */,
 				5FF81B8918F3A012004D1613 /* basketball_icon.png in Resources */,
 				5FF81B8718F3A00D004D1613 /* tennis_icon.png in Resources */,
 				5FE2496418B489D6007D740A /* Images.xcassets in Resources */,
 				7E68E49F18F0A3D9003FBFC0 /* frisbee_icon.jpg in Resources */,
+				5F4114D91910777A00B81929 /* Readme.txt in Resources */,
 				5FF81B7918F387DB004D1613 /* newsfeed.png in Resources */,
 				5FE2495C18B489D6007D740A /* Main_iPhone.storyboard in Resources */,
 				5FF81B8518F3A009004D1613 /* soccer_icon.png in Resources */,
@@ -568,7 +624,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -608,7 +663,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -644,7 +698,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Chen (C6V2288BD2)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/FirstBase",
@@ -652,6 +706,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstBase/FirstBase-Prefix.pch";
 				INFOPLIST_FILE = "FirstBase/FirstBase-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FirstBase",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -673,6 +731,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FirstBase/FirstBase-Prefix.pch";
 				INFOPLIST_FILE = "FirstBase/FirstBase-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FirstBase",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -683,7 +745,6 @@
 		5FE2497E18B489D6007D740A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FirstBase.app/FirstBase";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -706,7 +767,6 @@
 		5FE2497F18B489D6007D740A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FirstBase.app/FirstBase";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

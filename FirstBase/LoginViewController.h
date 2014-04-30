@@ -10,7 +10,7 @@
 
 // https://parse.com/docs/ios_guide#users/iOS
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : GAITrackedViewController
 @property (weak, nonatomic) IBOutlet UITextField *txtUsername;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 - (IBAction)loginClicked:(id)sender;

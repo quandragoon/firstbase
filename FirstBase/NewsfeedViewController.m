@@ -32,7 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -42,20 +41,28 @@
 
 
 - (void) viewWillAppear:(BOOL)animated {
-    PFQuery *publicQuery = [PFQuery queryWithClassName:kGameObject];
-    [publicQuery whereKey:@"friendsOnly" equalTo:[NSNumber numberWithBool:NO]];
-    
-    PFQuery *privateQuery = [PFQuery queryWithClassName:kGameObject];
-    [privateQuery whereKey:@"friendsOnly" equalTo:[NSNumber numberWithBool:YES]];
-    [privateQuery whereKey:@"friends" equalTo:[PFUser currentUser]];
-    
-    PFQuery *myEventsQuery = [PFQuery queryWithClassName:kGameObject];
-    [myEventsQuery whereKey:@"creator" equalTo:[PFUser currentUser]];
+//    PFQuery *publicQuery = [PFQuery queryWithClassName:kGameObject];
+//    [publicQuery whereKey:@"friendsOnly" equalTo:[NSNumber numberWithBool:NO]];
+//    
+//    PFQuery *privateQuery = [PFQuery queryWithClassName:kGameObject];
+//    [privateQuery whereKey:@"friendsOnly" equalTo:[NSNumber numberWithBool:YES]];
+//    [privateQuery whereKey:@"friends" equalTo:[PFUser currentUser]];
+//    
+//    PFQuery *myEventsQuery = [PFQuery queryWithClassName:kGameObject];
+//    [myEventsQuery whereKey:@"creator" equalTo:[PFUser currentUser]];
 
-    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:publicQuery, privateQuery, myEventsQuery, nil]];
+//    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:publicQuery, privateQuery, myEventsQuery, nil]];
+    PFQuery *query = [PFQuery queryWithClassName:kGameObject];
     [query orderByAscending:@"time"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.feedItems = [[NSMutableArray alloc] initWithArray:objects];
+        self.feedItems = [[NSMutableArray alloc] init];
+//        for (PFObject *game in objects) {
+//            if ([[game objectForKey:@"friendsOnly"] boolValue] == YES) {
+//                [[[[game objectForKey:@"creator"] relationForKey:@"friends"] query] whereKey:@"id" equalTo:[PFUser currentUser] objec]
+//            }
+//            [self.feedItems addObject:game];
+//        }
+        [self.feedItems addObject:game];
         [self.tableView reloadData];
     }];
 }
