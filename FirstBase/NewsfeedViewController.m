@@ -68,12 +68,17 @@
         [query orderByAscending:@"time"];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             self.feedItems = [[NSMutableArray alloc] init];
+            
+            NSArray *ratedGames = [[NSUserDefaults standardUserDefaults] arrayForKey:@"RatedGames"];
+            
             for (PFObject *game in objects) {
                 if ([[game objectForKey:@"friendsOnly"] boolValue] == YES) {
                     if (! [self.friends containsObject:[[game objectForKey:@"creator"] objectId]]) {
                         continue;
                     }
                 }
+                if ([ratedGames containsObject:[game objectId]])
+                    continue;
                 [self.feedItems addObject:game];
             }
             [self.tableView reloadData];

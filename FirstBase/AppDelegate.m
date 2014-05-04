@@ -35,7 +35,12 @@
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-50518404-1"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-//    
+    
+    if ([[NSUserDefaults standardUserDefaults] dictionaryForKey:@"RatedGames"] == nil) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSArray array] forKey:@"RatedGames"];
+    }
+
+//
 //    if (application.applicationState != UIApplicationStateBackground) {
 //        // Track an app open here if we launch with a push, unless
 //        // "content_available" was used to trigger a background push (introduced

@@ -66,6 +66,10 @@
         [obj setObject:[PFUser currentUser] forKey:@"rater"];
         [obj saveInBackground];
     }
+    NSMutableArray *ratedGames = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"RatedGames"]];
+    [ratedGames addObject:[self.game objectId]];
+    [[NSUserDefaults standardUserDefaults] setObject:ratedGames forKey:@"RatedGames"];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
