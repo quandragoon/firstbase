@@ -11,6 +11,7 @@
 @interface NewsfeedViewController : UITableViewController
 
 @property (nonatomic) NSMutableArray *feedItems;
+@property (nonatomic) NSMutableArray *friends;
 
 - (IBAction)createClicked:(id)sender;
 - (IBAction)editClicked:(id)sender;

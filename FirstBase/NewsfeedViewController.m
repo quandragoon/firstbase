@@ -52,18 +52,32 @@
 //    [myEventsQuery whereKey:@"creator" equalTo:[PFUser currentUser]];
 
 //    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:publicQuery, privateQuery, myEventsQuery, nil]];
-    PFQuery *query = [PFQuery queryWithClassName:kGameObject];
-    [query orderByAscending:@"time"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        self.feedItems = [[NSMutableArray alloc] init];
-        for (PFObject *game in objects) {
-//            if ([[game objectForKey:@"friendsOnly"] boolValue] == YES) {
-//                [[[[game objectForKey:@"creator"] relationForKey:@"friends"] query] whereKey:@"id" equalTo:[PFUser currentUser] objec]
-//            }
-            [self.feedItems addObject:game];
+    
+    PFQuery *friendsQ1 = [PFUser query];                                        // Get everyone who friended me (one-way friending)
+    PFQuery *friendsQ2 = [[[PFUser currentUser] relationForKey:@"friends"] query];      // Get everyone we friended
+    PFQuery *friendsQuery = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:friendsQ1, friendsQ2, nil]];
+    [friendsQuery findObjectsInBackgroundWithBlock:^(NSArray *friendsObjects, NSError *error) {
+        self.friends = [NSMutableArray array];
+        for (PFUser *f in friendsObjects) {
+            if (! [self.friends containsObject:[f objectId]]) {
+                [self.friends addObject:[f objectId]];
+            }
         }
-        // [self.feedItems addObject:game];
-        [self.tableView reloadData];
+
+        PFQuery *query = [PFQuery queryWithClassName:kGameObject];
+        [query orderByAscending:@"time"];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            self.feedItems = [[NSMutableArray alloc] init];
+            for (PFObject *game in objects) {
+                if ([[game objectForKey:@"friendsOnly"] boolValue] == YES) {
+                    if (! [self.friends containsObject:[[game objectForKey:@"creator"] objectId]]) {
+                        continue;
+                    }
+                }
+                [self.feedItems addObject:game];
+            }
+            [self.tableView reloadData];
+        }];
     }];
 }
 

@@ -51,11 +51,15 @@
             [query findObjectsInBackgroundWithBlock:^(NSArray *allUsers, NSError *error) {
                 NSMutableArray *users = [NSMutableArray arrayWithArray:allUsers];
                 for (PFUser *friend in self.friends) {
-                    if ([users containsObject:friend]) {
-                        [users removeObject:friend];
-                    }
+                    [users enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                        if ([[obj objectId] isEqualToString:[friend objectId]]) {
+                            [users removeObject:obj];
+                            *stop = YES;
+                        }
+                    }];
                 }
                 self.others = users;
+                
                 [self.tableView reloadData];
             }];
         }
